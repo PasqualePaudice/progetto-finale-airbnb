@@ -3,12 +3,6 @@ var $ = require('jquery');
 
 $(document).ready(function(){
 
-<<<<<<< HEAD
-=======
-    var prova = Math.random(1, 10);
-    console.log(prova);
-
->>>>>>> origin/master
 })
  /*** First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
