@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <form class="" action="{{ route('admin.store',['user_id' => Auth::user()->id ])}}" method="post">
+            <form class="" action="{{ route('admin.store',['user_id' => Auth::user()->id ])}}" method="post" enctype="multipart/form-data" >
                 @csrf
                 <div class="form-group">
                     <label for="title">Titolo inserzione</label>
@@ -44,6 +44,13 @@
 
                     <textarea class="form-control
                     " id="descrizione_appartamento" name="descrizione_appartamento" rows="8" ></textarea>
+                </div>
+
+                <div class="form-group">
+
+                    <label for="cover_image">Immagine di copertina</label>
+                    <input type="file"  class="form-control-file" id="cover_image" name="cover_image">
+
                 </div>
 
 

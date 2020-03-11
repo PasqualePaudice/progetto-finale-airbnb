@@ -16,6 +16,8 @@ class CreateApartmentsTable extends Migration
         Schema::create('apartments', function (Blueprint $table) {
             $table->id();
 
+            $table->string('title');
+            
             $table->longText('descrizione_appartamento');
 
             $table->integer('stanze');
@@ -29,7 +31,7 @@ class CreateApartmentsTable extends Migration
             $table->text('indirizzo');
 
             $table->string('cover_image')->nullable();
-            
+
             $table->timestamps();
 
         });
