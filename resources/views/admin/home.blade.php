@@ -16,6 +16,9 @@
 
                     You are logged in!
                 </div>
+                <div class="card-body">
+                    <a class="btn btn-info" href="{{route('admin.apartments.index')}}">Lista appartamenti</a>
+                </div>
             </div>
         </div>
     </div>

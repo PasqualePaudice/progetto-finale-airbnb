@@ -80,7 +80,9 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
-        //
+        return view('admin.apartments.edit',[
+          'apartment' => $apartment
+        ]);
     }
 
     /**
@@ -92,7 +94,9 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, Apartment $apartment)
     {
-        //
+        $dati= $request->all();
+        $apartment->update($dati);
+        return redirect()->route('admin.apartments.index');
     }
 
     /**
@@ -103,6 +107,7 @@ class ApartmentController extends Controller
      */
     public function destroy(Apartment $apartment)
     {
-        //
+      $apartment->delete();
+      return redirect()->route('admin.apartments.index');
     }
 }

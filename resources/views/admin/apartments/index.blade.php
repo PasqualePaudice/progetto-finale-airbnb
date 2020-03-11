@@ -27,8 +27,12 @@
                 <td>{{$apartment->indirizzo}}</td>
                 <td>
                   <a class="btn btn-info" href="{{route('admin.apartments.show',['apartment' => $apartment->id])}}">Visualizza</a>
-                  <a class="btn btn-info" href="#">Modifica</a>
-                  <a class="btn btn-info" href="#">Elimina</a>
+                  <a class="btn btn-warning" href="{{route('admin.apartments.edit',['apartment' => $apartment->id])}}">Modifica</a>
+                  <form class="d-inline-block" action=" {{route('admin.apartments.destroy',['apartment' => $apartment->id])}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <input class="btn btn-danger d-inline-block" type="submit" value="Cancella">
+                  </form>
                 </td>
               </tr>
             @empty
