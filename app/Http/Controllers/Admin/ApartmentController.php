@@ -16,7 +16,10 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        return view('admin.apartments.index');
+        $apartments = Apartment::all();
+        return view('admin.apartments.index',[
+          'apartments' => $apartments
+        ]);
     }
 
     /**
@@ -26,7 +29,7 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        return view('admin.create');
+        return view('admin.apartments.create');
     }
 
     /**
@@ -52,7 +55,7 @@ class ApartmentController extends Controller
 
         $apartment->save();
 
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.apartments.index');
 
     }
 
@@ -64,7 +67,9 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
-        //
+      return view('admin.apartments.show',[
+        'apartment' => $apartment
+      ]);
     }
 
     /**
