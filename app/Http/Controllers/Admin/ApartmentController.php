@@ -15,7 +15,7 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        return view('admin.create');
+        return view('admin.home');
     }
 
     /**
@@ -25,7 +25,7 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        return bview(adka);
+        return view('admin.create');
     }
 
     /**
@@ -36,7 +36,16 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dati= $request->all();
+
+        $apartment = new Apartment();
+
+        $apartment->fill($dati);
+
+        $apartment->save();
+
+        return redirect()->route('admin.index');
+
     }
 
     /**
