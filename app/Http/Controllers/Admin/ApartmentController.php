@@ -36,7 +36,16 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dati= $request->all();
+
+        $apartment = new Apartment();
+
+        $apartment->fill($dati);
+
+        $apartment->save();
+
+        return redirect()->route('admin.index');
+
     }
 
     /**
