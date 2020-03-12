@@ -49,11 +49,11 @@
 
                 <div class="form-group">
 
-                    <label for="cover_image">Immagine di copertina</label>
+                    <label for="cover_image">Immagine di copertina</label> <br>
                     @if ($apartment->cover_image)
-                      <img src="{{asset('storage/' . $apartment->cover_image)}}" alt="">
+                      <img src="{{asset('storage/' . $apartment->cover_image)}}" alt="" style="width:200px">
                     @endif
-                    <input type="file"  class="form-control-file" id="cover_image" name="cover_image">
+                    <input type="file"  class="form-control-file" id="cover_image" name="cover_image"  >
 
                 </div>
 
