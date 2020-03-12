@@ -42,16 +42,15 @@ class ApartmentController extends Controller
     {
         $dati= $request->all();
 
+        $apartment = new Apartment();
+
+        $apartment->fill($dati);
+
         $cover_image= $dati['cover_image'];
 
         $cover_image_path= Storage::put('uploads', $cover_image);
 
-
-        $apartment = new Apartment();
-
         $apartment->cover_image= $cover_image_path;
-
-        $apartment->fill($dati);
 
         $apartment->save();
 
