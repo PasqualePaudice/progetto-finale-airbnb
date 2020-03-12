@@ -6,6 +6,7 @@ use App\Apartment;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Service;
 
 class ApartmentController extends Controller
 {
@@ -29,7 +30,8 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        return view('admin.apartments.create');
+        $services = Service::all();
+        return view('admin.apartments.create',['services'=>$services]);
     }
 
     /**
@@ -53,6 +55,7 @@ class ApartmentController extends Controller
 
         $dati= $request->all();
 
+
         $apartment = new Apartment();
 
         $apartment->fill($dati);
@@ -67,6 +70,13 @@ class ApartmentController extends Controller
 
 
         $apartment->save();
+
+        if(!empty($dati['service_id'])) {
+            // sono stati selezionati dei servizi => li assegno all' appartamento
+            // sincronizzo l' appartamneto creato con i servizi scelti
+
+             $apartment->services()->sync($dati['service_id']);
+         }
 
         return redirect()->route('admin.apartments.index');
 
@@ -93,8 +103,9 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
+        $services = Service::all();
         return view('admin.apartments.edit',[
-          'apartment' => $apartment
+          'apartment' => $apartment,'services'=>$services
         ]);
     }
 
@@ -127,6 +138,13 @@ class ApartmentController extends Controller
          }
 
         $apartment->update($dati);
+
+        if (!empty($dati['service_id'])) {
+            $apartment->services()->sync($dati['service_id']);
+        }
+        else {
+            $apartment->services()->sync([]);
+        }
 
 
         return redirect()->route('admin.apartments.index');

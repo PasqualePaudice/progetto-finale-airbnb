@@ -57,6 +57,38 @@
 
                 </div>
 
+                @if ($services->count() > 0)
+
+                    <div class="from-group">
+
+                        <p>Seleziona i servizi:</p>
+
+                        {{-- @foreach ($services as $service)
+                         <label for="service_{{$service->id}}">
+                            <input id="tag_{{$service->id}}" type="checkbox" name="service_id[]" value="{{$service->id}}"
+                            {{ $apartment->services->contains($service) ? 'checked' : ''}}>
+                            {{ $service->service_name}}
+                        </label>
+                        @endforeach --}}
+
+                        @foreach ($services as $service)
+
+                            <label class="mr-3">
+
+                                <input type="checkbox" name="service_id[]" value="{{$service->id}}"
+                                 @if ($errors->any())
+                                      {{in_array($service->id, old('service_id', array())) ? 'checked' : ''}}
+                                 @else
+                                     {{$apartment->services->contains($service) ? 'checked' : ''}}
+                                 @endif
+                                 >
+                                    {{$service->service_name}}
+                            </label>
+                         @endforeach
+                    </div>
+
+                @endif
+
                 <button class="btn btn-warning" type="submit" name="button">Modifica</button>
 
 

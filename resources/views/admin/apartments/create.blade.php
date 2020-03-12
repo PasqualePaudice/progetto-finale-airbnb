@@ -7,7 +7,13 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <form class="" action="{{ route('admin.apartments.store',['user_id' => Auth::user()->id ])}}" method="post" enctype="multipart/form-data" >
+
+
+
+
+            <form class="" action="{{ route('admin.apartments.store', ['user_id' => Auth::user()->id])}}" method="post" enctype="multipart/form-data" >
+
+
                 @csrf
                 <div class="form-group">
                     <label for="title">Titolo inserzione</label>
@@ -50,6 +56,24 @@
 
                     <label for="cover_image">Immagine di copertina</label>
                     <input type="file"  class="form-control-file" id="cover_image" name="cover_image">
+
+                </div>
+
+                <div class="form-group">
+
+                    @if($services->count() > 0)
+                        <p>Seleziona i servizi</p>
+                        @foreach ($services as $service)
+
+                            <label for="service_{{ $service->id }}">
+
+                                <input id="service_{{ $service->id }}" type="checkbox" name="service_id[]" value="{{ $service->id }}"
+                                {{in_array($service->id, old('service_id', array())) ? 'checked' : ''}} >
+
+                                {{ $service->service_name }}
+                            </label>
+                        @endforeach
+                    @endif
 
                 </div>
 
