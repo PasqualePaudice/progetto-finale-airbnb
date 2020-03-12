@@ -40,23 +40,44 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+                'title' => 'required|max:255',
+                'indirizzo' => 'required|max:100',
+                'descrizione_appartamento'=> 'required',
+                'posti_letto'=> 'required|max:2',
+                'stanze' => 'required|max:2',
+                'bagni' => 'required|max:2',
+                'metri_quadri' => 'required|max:5'
+            ]);
+
         $dati= $request->all();
 
+<<<<<<< HEAD
         $cover_image= $dati['cover_image'];
 <<<<<<< HEAD
         $cover_image_path= Storage::put('uploads', $cover_image);
 
 =======
-
-        $cover_image_path= Storage::put('uploads', $cover_image);
-
-
->>>>>>> master
+=======
         $apartment = new Apartment();
-
-        $apartment->cover_image= $cover_image_path;
+>>>>>>> master
 
         $apartment->fill($dati);
+
+        if (!empty($dati['cover_image'])) {
+            $cover_image= $dati['cover_image'];
+
+<<<<<<< HEAD
+>>>>>>> master
+        $apartment = new Apartment();
+=======
+            $cover_image_path= Storage::put('uploads', $cover_image);
+>>>>>>> master
+
+            $apartment->cover_image= $cover_image_path;
+        }
+
 
         $apartment->save();
 
@@ -99,8 +120,28 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, Apartment $apartment)
     {
-        $dati= $request->all();
+        $request->validate([
+                'title' => 'required|max:255',
+                'indirizzo' => 'required|max:100',
+                'descrizione_appartamento'=> 'required',
+                'posti_letto'=> 'required|max:2',
+                'stanze' => 'required|max:2',
+                'bagni' => 'required|max:2',
+                'metri_quadri' => 'required|max:6'
+            ]);
+
+        $dati = $request->all();
+        if (!empty($dati['cover_image'])) {
+
+             $cover_image = $dati['cover_image'];
+             $cover_image_path = Storage::put('uploads', $cover_image);
+
+             $dati['cover_image'] = $cover_image_path;
+         }
+
         $apartment->update($dati);
+
+
         return redirect()->route('admin.apartments.index');
     }
 

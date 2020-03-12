@@ -47,7 +47,7 @@
                     <label for="descrizione_appartamento">Descrizione</label>
 
                     <textarea class="form-control
-                    " id="descrizione_appartamento" name="descrizione_appartamento" rows="8" ></textarea>
+                    " id="descrizione_appartamento" name="descrizione_appartamento" rows="8" >{{old('descrizione_appartamento')}}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="cover_image">Immagine di copertina</label>
