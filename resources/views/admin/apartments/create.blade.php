@@ -7,7 +7,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+<<<<<<< HEAD:resources/views/admin/create.blade.php
             <form class="" action="{{ route('admin.store',['user_id' => Auth::user()->id ])}}" method="post" enctype="multipart/form-data">
+=======
+            <form class="" action="{{ route('admin.apartments.store',['user_id' => Auth::user()->id ])}}" method="post" enctype="multipart/form-data" >
+>>>>>>> master:resources/views/admin/apartments/create.blade.php
                 @csrf
                 <div class="form-group">
                     <label for="title">Titolo inserzione</label>
@@ -48,6 +52,13 @@
                 <div class="form-group">
                     <label for="cover_image">Immagine di copertina</label>
                     <input type="file"  class="form-control" id="cover_image" name="cover_image">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="cover_image">Immagine di copertina</label>
+                    <input type="file"  class="form-control-file" id="cover_image" name="cover_image">
 
                 </div>
 

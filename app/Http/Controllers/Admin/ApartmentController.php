@@ -16,7 +16,10 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $apartments = Apartment::all();
+        return view('admin.apartments.index',[
+          'apartments' => $apartments
+        ]);
     }
 
     /**
@@ -26,7 +29,7 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        return view('admin.create');
+        return view('admin.apartments.create');
     }
 
     /**
@@ -40,8 +43,15 @@ class ApartmentController extends Controller
         $dati= $request->all();
 
         $cover_image= $dati['cover_image'];
+<<<<<<< HEAD
         $cover_image_path= Storage::put('uploads', $cover_image);
 
+=======
+
+        $cover_image_path= Storage::put('uploads', $cover_image);
+
+
+>>>>>>> master
         $apartment = new Apartment();
 
         $apartment->cover_image= $cover_image_path;
@@ -50,7 +60,7 @@ class ApartmentController extends Controller
 
         $apartment->save();
 
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.apartments.index');
 
     }
 
@@ -62,7 +72,9 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
-        //
+      return view('admin.apartments.show',[
+        'apartment' => $apartment
+      ]);
     }
 
     /**
@@ -73,7 +85,9 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
-        //
+        return view('admin.apartments.edit',[
+          'apartment' => $apartment
+        ]);
     }
 
     /**
@@ -85,7 +99,9 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, Apartment $apartment)
     {
-        //
+        $dati= $request->all();
+        $apartment->update($dati);
+        return redirect()->route('admin.apartments.index');
     }
 
     /**
@@ -96,6 +112,7 @@ class ApartmentController extends Controller
      */
     public function destroy(Apartment $apartment)
     {
-        //
+      $apartment->delete();
+      return redirect()->route('admin.apartments.index');
     }
 }
