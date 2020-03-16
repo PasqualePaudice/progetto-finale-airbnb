@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Service;
+use Illuminate\Support\Facades\Auth;
 
 class ApartmentController extends Controller
 {
@@ -17,7 +18,8 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::all();
+        $apartments = Apartment::all()->where('user_id', '=', Auth::user()->id);
+        // $apartments = Apartment::all();
         return view('admin.apartments.index',[
           'apartments' => $apartments
         ]);

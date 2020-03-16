@@ -21,7 +21,7 @@
             </tr>
           </thead>
           <tbody>
-            @forelse ($apartments as $apartment)
+            @forelse($apartments as $apartment)
               <tr>
                 <td>{{$apartment->title}}</td>
                 <td>{{$apartment->indirizzo}}</td>
