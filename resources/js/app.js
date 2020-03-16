@@ -3,6 +3,10 @@ var $ = require('jquery');
 
 $(document).ready(function(){
 
+
+
+
+
 })
  /*** First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -32,6 +36,31 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app',
-});
+ const app = new Vue({
+     el: '#app',
+ });
+
+
+import tt from '@tomtom-international/web-sdk-maps';
+import '@tomtom-international/web-sdk-maps/dist/maps-web.min.js';
+
+var lat = $('#lat').val();
+var lon = $('#lon').val();
+
+const map = tt.map({
+    key: "YPixAIIG2SgrHPBm2WGBWUa9L4JiGcFe",
+    container: "map",
+    style: 'tomtom://vector/1/basic-main',
+    center: [ lon , lat ],
+    zoom: 15,
+    theme:{
+    style:'main',
+    layer:'basic',
+    source:'vector'
+         }
+
+    });
+
+var maker=new tt.Marker().setLngLat([lon,lat]).addTo(map);
+map.addControl(new tt.FullscreenControl());
+map.addControl(new tt.NavigationControl());
