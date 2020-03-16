@@ -92,9 +92,15 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
-      return view('admin.apartments.show',[
-        'apartment' => $apartment
-      ]);
+      if ($apartment->user_id == Auth::user()->id) {
+        return view('admin.apartments.show',[
+          'apartment' => $apartment
+        ]);
+      }
+      else {
+        return abort(404);
+      }
+
     }
 
     /**
@@ -105,10 +111,15 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
+      if ($apartment->user_id == Auth::user()->id) {
         $services = Service::all();
         return view('admin.apartments.edit',[
           'apartment' => $apartment,'services'=>$services
         ]);
+      }
+      else {
+        return abort(404);
+      }
     }
 
     /**
