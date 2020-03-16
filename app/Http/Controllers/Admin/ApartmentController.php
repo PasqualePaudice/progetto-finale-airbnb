@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Service;
 use Illuminate\Support\Facades\Auth;
+use GuzzleHttp\Client;
+use App\Coordinate;
 
 class ApartmentController extends Controller
 {
@@ -55,12 +57,48 @@ class ApartmentController extends Controller
                 'metri_quadri' => 'required|max:5'
             ]);
 
+
+        $via = $request->indirizzo;
+        $citta = $request->city;
+        $stato = $request->state;
+        $cap = $request->cap;
+
+        $indirizzo = $via . ' ' . $citta .' '.  $cap;
+
+        $client = new Client();
+
+    	$response = $client->request('GET', 'https://api.tomtom.com/search/2/geocode/' . $indirizzo . '.json?countrySet='. $stato. '&key=YPixAIIG2SgrHPBm2WGBWUa9L4JiGcFe');
+
+    	$statusCode = $response->getStatusCode();
+
+    	$body = $response->getBody()->getContents();
+
+        $body = json_decode($body);
+
+        $prova = $body->results[0];
+
+
+        $lat = $prova->position->lat;
+        $lon = $prova->position->lon;
+
+
+
+
+
         $dati= $request->all();
 
+        $coordinate = new Coordinate();
+
+        $coordinate->lat= $lat;
+        $coordinate->lon= $lon;
+
+        $coordinate->save();
 
         $apartment = new Apartment();
 
         $apartment->fill($dati);
+
+        $apartment->coordinates_id = $coordinate->id;
 
         if (!empty($dati['cover_image'])) {
             $cover_image= $dati['cover_image'];
@@ -92,9 +130,11 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
+        $coordinate = Coordinate::where('id',$apartment->coordinates_id)->first();
+
       if ($apartment->user_id == Auth::user()->id) {
         return view('admin.apartments.show',[
-          'apartment' => $apartment
+          'apartment' => $apartment , 'coordinate' => $coordinate
         ]);
       }
       else {

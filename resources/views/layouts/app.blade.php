@@ -12,12 +12,15 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/maps.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
 </head>
 <body>
     <div id="app">
@@ -79,5 +82,6 @@
             @yield('content')
         </main>
     </div>
+    
 </body>
 </html>
