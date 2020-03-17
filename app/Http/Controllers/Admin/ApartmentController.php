@@ -10,6 +10,8 @@ use App\Service;
 use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Client;
 use App\Coordinate;
+use Braintree_Transaction;
+
 
 class ApartmentController extends Controller
 {
@@ -213,5 +215,45 @@ class ApartmentController extends Controller
     {
       $apartment->delete();
       return redirect()->route('admin.apartments.index');
+    }
+
+    public function pay(Apartment $apartment){
+
+        return view('admin.sponsor.index',['apartment' => $apartment]);
+
+    }
+
+    public function price(Request $request , Apartment $apartment){
+
+         return view('admin.sponsor.check',['apartment' => $apartment , 'prezzo' => $request->Piano]);
+    }
+
+
+
+    public function make(Request $request){
+
+
+
+        $payload = $request->input('payload', false);
+        $nonce = $payload['nonce'];
+
+        $status = Braintree_Transaction::sale([
+        	'amount' => '10.00',
+        	'paymentMethodNonce' => $nonce,
+            'customer' => [
+                'firstName'=> 'gigi',
+                'lastName'=> 'Augusto',
+                'email'=> 'cesare@augusto.com'
+            ],
+        	'options' => [
+        	    'submitForSettlement' => True
+        	]
+        ]);
+
+
+
+        $response = response()->json($status);
+
+
     }
 }

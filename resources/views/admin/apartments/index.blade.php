@@ -33,7 +33,12 @@
                     @method('DELETE')
                     <input class="btn btn-danger d-inline-block" type="submit" value="Cancella">
                   </form>
+
+                  <a class="btn btn-success" href="{{ route('admin.apartments.sponsor',['apartment' => $apartment->id]) }}">
+                  Sponsorizza</a>
+
                 </td>
+
               </tr>
             @empty
               <tr>
