@@ -228,32 +228,24 @@ class ApartmentController extends Controller
          return view('admin.sponsor.check',['apartment' => $apartment , 'prezzo' => $request->Piano]);
     }
 
+    public function make(Request $request) {
+    $price = $request->input('prezzo');
+    $payload = $request->input('payload', false);
+    $nonce = $payload['nonce'];
 
-
-    public function make(Request $request){
-
-
-
-        $payload = $request->input('payload', false);
-        $nonce = $payload['nonce'];
-
-        $status = Braintree_Transaction::sale([
-        	'amount' => '10.00',
-        	'paymentMethodNonce' => $nonce,
-            'customer' => [
-                'firstName'=> 'gigi',
-                'lastName'=> 'Augusto',
-                'email'=> 'cesare@augusto.com'
-            ],
-        	'options' => [
-        	    'submitForSettlement' => True
-        	]
-        ]);
-
-
-
-        $response = response()->json($status);
-
-
+    $status = Braintree_Transaction::sale([
+	'amount' => $price,
+	'paymentMethodNonce' => $nonce,
+    'customer' => [
+        'firstName'=> Auth::user()->name,
+        'lastName'=> Auth::user()->lastname,
+        'email'=> Auth::user()->email
+    ],
+	'options' => [
+	    'submitForSettlement' => True
+	]
+    ]);
+    // salvare dettagli in db
+    return response()->json($status);
     }
 }
