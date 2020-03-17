@@ -24,4 +24,8 @@ Route::get('/admin', 'HomeController@index')->name('home');
 Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->group(function(){
 
     Route::resource('/apartments','ApartmentController');
+    Route::get('/apartments/{apartment}/sponsor','ApartmentController@pay')->name('apartments.sponsor');
+    Route::get('/payment/make', 'ApartmentController@make')->name('payment.make');
+    Route::post('/apartments/{apartment}/sponsor', 'ApartmentController@price')->name('payment.price');
+
 });
