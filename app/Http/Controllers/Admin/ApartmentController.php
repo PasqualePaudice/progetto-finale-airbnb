@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Client;
 use App\Coordinate;
 use Braintree_Transaction;
+use App\Sponsor;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+
+
 
 
 class ApartmentController extends Controller
@@ -23,9 +28,18 @@ class ApartmentController extends Controller
     public function index()
     {
         $apartments = Apartment::all()->where('user_id', '=', Auth::user()->id);
+
+        $apartment_sponsors = DB::table('apartment_sponsor')->get();
+
+        $now = Carbon::now();
+
+
+
+
+
         // $apartments = Apartment::all();
         return view('admin.apartments.index',[
-          'apartments' => $apartments
+          'apartments' => $apartments, 'now' => $now
         ]);
     }
 
@@ -229,7 +243,9 @@ class ApartmentController extends Controller
     }
 
     public function make(Request $request) {
+
     $price = $request->input('prezzo');
+    $apartment_id = $request->input('amp;apartment');
     $payload = $request->input('payload', false);
     $nonce = $payload['nonce'];
 
@@ -245,7 +261,37 @@ class ApartmentController extends Controller
 	    'submitForSettlement' => True
 	]
     ]);
-    // salvare dettagli in db
+
+    if ($status->success) {
+        $start = Carbon::now();
+
+
+        if($price == '2.99'){
+            $id_price='1';
+            $end=  Carbon::now()->add(1, 'day');
+
+        }elseif($price == '5.99'){
+            $id_price='2';
+            $end=  Carbon::now()->add(72, 'hour');
+        }else{
+            $id_price='3';
+            $end=  Carbon::now()->add(144, 'hour');
+        }
+
+        $appartamento = Apartment::find($apartment_id);
+        // $sponsor = Sponsor::find($id_price);
+
+        $appartamento->sponsors()->attach($id_price,['start_sponsor'=>$start,'end_sponsor'=>$end]);
+
+        $messaggio = true;
+    }else {
+        $messaggio = false;
+    }
+
+
+
     return response()->json($status);
+
+
     }
 }
