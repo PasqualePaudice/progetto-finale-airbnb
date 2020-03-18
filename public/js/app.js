@@ -49530,7 +49530,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tomtom_international_web_sdk_maps_dist_maps_web_min_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tomtom_international_web_sdk_maps_dist_maps_web_min_js__WEBPACK_IMPORTED_MODULE_1__);
 var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
-$(document).ready(function () {});
+$(document).ready(function () {
+  $(".menu-icon").on("click", function () {
+    $("nav ul").toggleClass("showing");
+  });
+  $(window).on("scroll", function () {
+    if ($(window).scrollTop()) {
+      $('nav').addClass('black');
+    } else {
+      $('nav').removeClass('black');
+    }
+  });
+});
 /*** First we will load all of this project's JavaScript dependencies which
 * includes Vue and other libraries. It is a great starting point when
 * building robust, powerful web applications using Vue and Laravel.
@@ -49713,8 +49724,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Programmi\MAMP\htdocs\Airbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Programmi\MAMP\htdocs\Airbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\MAMP\htdocs\BooleanPHP\progetto-finale-airbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\MAMP\htdocs\BooleanPHP\progetto-finale-airbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
