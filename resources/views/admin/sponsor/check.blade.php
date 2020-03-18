@@ -10,7 +10,7 @@
                 </div>
             </div>
 
-            <a class="btn btn-success" href="{{route('admin.apartments.index')}}">Torna agli appartamenti</a>
+            <a class="btn btn-success mt-5" href="{{route('admin.apartments.index')}}">Torna agli appartamenti</a>
         </div>
 
 
@@ -26,15 +26,14 @@
                          instance.requestPaymentMethod(function (err, payload) {
                              $.get('{{ route('admin.payment.make', [ 'prezzo' => $prezzo , 'apartment' => $apartment]) }}', {payload},function(response){
                                  if (response.success) {
-                                     alert('Payment successfull!');
-
+                                     window.location.replace('{{ route('admin.apartments.index') }}');
                                  } else {
                                      alert('Payment failed');
                                  }
                              }, 'json');
 
                          });
-                         document.getElementById("submit-button").style.display = "none";
+
                      });
 
 
