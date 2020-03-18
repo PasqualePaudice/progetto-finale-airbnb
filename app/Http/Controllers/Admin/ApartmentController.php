@@ -13,6 +13,7 @@ use App\Coordinate;
 use Braintree_Transaction;
 use App\Sponsor;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -28,10 +29,17 @@ class ApartmentController extends Controller
     {
         $apartments = Apartment::all()->where('user_id', '=', Auth::user()->id);
 
+        $apartment_sponsors = DB::table('apartment_sponsor')->get();
+
+        $now = Carbon::now();
+
+
+
+
 
         // $apartments = Apartment::all();
         return view('admin.apartments.index',[
-          'apartments' => $apartments
+          'apartments' => $apartments, 'now' => $now
         ]);
     }
 
