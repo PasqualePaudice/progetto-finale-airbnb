@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-
-
-
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div id="dropin-container"></div>
-                <button class="btn btn-success" id="submit-button">Paga Ora</button>
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div id="dropin-container"></div>
+                    <button class="btn btn-success" id="submit-button">Paga Ora</button>
+                </div>
             </div>
         </div>
 
@@ -19,7 +19,7 @@
              }, function (createErr, instance) {
                      button.addEventListener('click', function () {
                          instance.requestPaymentMethod(function (err, payload) {
-                             $.get('{{ route('admin.payment.make') }}', {payload},function(response){
+                             $.get('{{ route('admin.payment.make', [ 'prezzo' => $prezzo ]) }}', {payload},function(response){
                                  if (response.success) {
                                      alert('Payment successfull!');
                                  } else {
