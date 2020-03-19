@@ -10893,7 +10893,6 @@ body {
 header {
   width: 100%;
   background-color: #b0c6f5;
-<<<<<<< HEAD
 }
 
 .logo {
@@ -10917,23 +10916,6 @@ nav.black ul {
 }
 
 nav ul {
-=======
-  height: 64px;
-}
-
-header nav {
-  position: fixed;
-  width: 100%;
-  z-index: 10;
-  background-color: #b0c6f5;
-}
-
-header nav.black ul {
-  background: #000;
-}
-
-header nav ul {
->>>>>>> f1c6c197fecea369d4df666aaa152583244b3f0e
   list-style: none;
   background: rgba(0, 0, 0, 0);
   overflow: hidden;
@@ -10944,50 +10926,24 @@ header nav ul {
   transition: 1s;
 }
 
-<<<<<<< HEAD
 nav ul li {
-=======
-header nav ul li {
->>>>>>> f1c6c197fecea369d4df666aaa152583244b3f0e
   display: inline-block;
   padding: 20px;
 }
 
-<<<<<<< HEAD
 nav ul li a {
-=======
-header nav ul li a {
->>>>>>> f1c6c197fecea369d4df666aaa152583244b3f0e
   text-decoration: none;
   color: #fff;
   font-size: 14px;
 }
 
-<<<<<<< HEAD
 nav ul li a:hover {
-=======
-header nav ul li a:hover {
->>>>>>> f1c6c197fecea369d4df666aaa152583244b3f0e
   text-decoration: none;
   color: rgba(255, 255, 255, 0.9);
   transition: all 0.2s;
 }
 
-<<<<<<< HEAD
 .menu-icon {
-=======
-header nav .logo {
-  position: fixed;
-  float: left;
-  margin: 10px 36px;
-}
-
-header nav .logo img {
-  height: 50px;
-}
-
-header nav .menu-icon {
->>>>>>> f1c6c197fecea369d4df666aaa152583244b3f0e
   width: 100%;
   background: #000;
   text-align: right;
@@ -10998,7 +10954,6 @@ header nav .menu-icon {
   display: none;
 }
 
-<<<<<<< HEAD
 .search {
   display: inline-block;
   position: relative;
@@ -11050,26 +11005,6 @@ header nav .menu-icon {
 }
 
 .search-box input + span {
-=======
-header nav .logo {
-  position: fixed;
-  float: left;
-  margin: 10px 36px;
-}
-
-header nav .logo img {
-  height: 50px;
-}
-
-header nav .logo .search {
-  display: inline-block;
-  position: relative;
-  left: 50px;
-  top: -5px;
-}
-
-header nav .logo .search .search-box span {
->>>>>>> f1c6c197fecea369d4df666aaa152583244b3f0e
   z-index: -1;
   position: absolute;
   border: 2px solid #fff;
@@ -11081,11 +11016,7 @@ header nav .logo .search .search-box span {
   left: 0;
 }
 
-<<<<<<< HEAD
 .search-box input + span::before {
-=======
-header nav .logo .search .search-box span::before {
->>>>>>> f1c6c197fecea369d4df666aaa152583244b3f0e
   transition: all 0.25s ease-in 0.25s;
   transform-origin: left top;
   content: "";
@@ -11097,7 +11028,6 @@ header nav .logo .search .search-box span::before {
   transform: rotate(45deg) translate(26px, -2px);
 }
 
-<<<<<<< HEAD
 .container {
   margin-top: 100px;
 }
@@ -11268,60 +11198,12 @@ header nav .logo .search .search-box span::before {
 
 @media all and (max-width: 480px) {
   .logo {
-=======
-header nav .logo .search .search-box input {
-  border: none;
-  background: none;
-  width: 25px;
-  height: 25px;
-  transition: all 0.25s ease-in 0.25s;
-  z-index: 1;
-  color: transparent;
-  font-size: 1em;
-  line-height: 25px;
-}
-
-header nav .logo .search .search-box input:hover {
-  cursor: pointer;
-}
-
-header nav .logo .search .search-box input:hover + span {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-header nav .logo .search .search-box input:focus {
-  cursor: text;
-}
-
-header nav .logo .search .search-box input:focus + span {
-  width: 200px;
-}
-
-header nav .logo .search .search-box input:focus + span::before {
-  width: 2px;
-  opacity: 0;
-  transition: all 0.25s ease-in;
-}
-
-header nav .logo .search .search-box input:focus {
-  width: 200px;
-  padding: 0 10px;
-  outline: none;
-  color: black;
-  background: none;
-  color: #fff;
-}
-
-@media (max-width: 768px) {
-  header nav .logo {
->>>>>>> f1c6c197fecea369d4df666aaa152583244b3f0e
     position: fixed;
     top: 0;
     margin-top: 10px;
     margin-left: 18px;
   }
 
-<<<<<<< HEAD
   nav ul {
     max-height: 0px;
     background: #000;
@@ -11336,29 +11218,12 @@ header nav .logo .search .search-box input:focus {
   }
 
   nav ul li {
-=======
-  header nav .menu-icon {
-    display: block;
-  }
-
-  header nav ul {
-    max-height: 0px;
-    background: #000;
-  }
-
-  header nav ul.showing {
-    max-height: 40em;
-  }
-
-  header nav ul li {
->>>>>>> f1c6c197fecea369d4df666aaa152583244b3f0e
     box-sizing: border-box;
     width: 100%;
     padding: 24px 0;
     text-align: center;
   }
 
-<<<<<<< HEAD
   .menu-icon {
     height: 60px;
     display: block;
@@ -11514,7 +11379,194 @@ body {
 .trigger-btn {
   display: inline-block;
   margin: 100px auto;
-=======
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+}
+
+header {
+  width: 100%;
+  background-color: #b0c6f5;
+  height: 64px;
+}
+
+header nav {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  background-color: #b0c6f5;
+}
+
+header nav.black ul {
+  background: #000;
+}
+
+header nav ul {
+  list-style: none;
+  background: rgba(0, 0, 0, 0);
+  overflow: hidden;
+  color: #fff;
+  padding: 0;
+  text-align: right;
+  margin: 0;
+  transition: 1s;
+}
+
+header nav ul li {
+  display: inline-block;
+  padding: 20px;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 14px;
+}
+
+header nav ul li a:hover {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.9);
+  transition: all 0.2s;
+}
+
+header nav .logo {
+  position: fixed;
+  float: left;
+  margin: 10px 36px;
+}
+
+header nav .logo img {
+  height: 50px;
+}
+
+header nav .menu-icon {
+  width: 100%;
+  background: #000;
+  text-align: right;
+  box-sizing: border-box;
+  padding: 15px 24px;
+  cursor: pointer;
+  color: #fff;
+  display: none;
+}
+
+header nav .logo {
+  position: fixed;
+  float: left;
+  margin: 10px 36px;
+}
+
+header nav .logo img {
+  height: 50px;
+}
+
+header nav .logo .search {
+  display: inline-block;
+  position: relative;
+  left: 50px;
+  top: -5px;
+}
+
+header nav .logo .search .search-box span {
+  z-index: -1;
+  position: absolute;
+  border: 2px solid #fff;
+  top: 0;
+  width: 25px;
+  height: 25px;
+  transition: all 0.25s ease-in 0.25s;
+  border-radius: 25px;
+  left: 0;
+}
+
+header nav .logo .search .search-box span::before {
+  transition: all 0.25s ease-in 0.25s;
+  transform-origin: left top;
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 5px;
+  border-radius: 5px;
+  background: #fff;
+  transform: rotate(45deg) translate(26px, -2px);
+}
+
+header nav .logo .search .search-box input {
+  border: none;
+  background: none;
+  width: 25px;
+  height: 25px;
+  transition: all 0.25s ease-in 0.25s;
+  z-index: 1;
+  color: transparent;
+  font-size: 1em;
+  line-height: 25px;
+}
+
+header nav .logo .search .search-box input:hover {
+  cursor: pointer;
+}
+
+header nav .logo .search .search-box input:hover + span {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+header nav .logo .search .search-box input:focus {
+  cursor: text;
+}
+
+header nav .logo .search .search-box input:focus + span {
+  width: 200px;
+}
+
+header nav .logo .search .search-box input:focus + span::before {
+  width: 2px;
+  opacity: 0;
+  transition: all 0.25s ease-in;
+}
+
+header nav .logo .search .search-box input:focus {
+  width: 200px;
+  padding: 0 10px;
+  outline: none;
+  color: black;
+  background: none;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  header nav .logo {
+    position: fixed;
+    top: 0;
+    margin-top: 10px;
+    margin-left: 18px;
+  }
+
+  header nav .menu-icon {
+    display: block;
+  }
+
+  header nav ul {
+    max-height: 0px;
+    background: #000;
+  }
+
+  header nav ul.showing {
+    max-height: 40em;
+  }
+
+  header nav ul li {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 24px 0;
+    text-align: center;
+  }
+
   header nav.black ul {
     background: #000;
   }
@@ -11580,6 +11632,5 @@ main .card ul li {
 main .card ul li img {
   height: 20px;
   margin-right: 10px;
->>>>>>> f1c6c197fecea369d4df666aaa152583244b3f0e
 }
 

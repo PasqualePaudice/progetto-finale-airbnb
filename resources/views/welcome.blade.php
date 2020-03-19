@@ -16,7 +16,7 @@
         
     </head>
     <body>
-      <a class="btn btn-info" href="{{route('dettagli',['apartment' => '8'])}}">Visualizza</a>
+      <a class="btn btn-info" href="{{route('dettagli',['apartment' => '3'])}}">Visualizza</a>
         <div class="flex-center position-ref full-height">
             
 
