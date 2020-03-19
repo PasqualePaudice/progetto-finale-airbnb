@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {{-- qui inserisco la navbar con la parte animata--}}
 <div class="wrapper">
     <header>
@@ -73,8 +72,7 @@
 
     </header>
   </div>
-=======
-<div class="wrapper">
+{{-- <div class="wrapper">
   <header>
     <nav>
       <div class="menu-icon">
@@ -104,5 +102,4 @@
       </div>
     </nav>
   </header>
-</div>
->>>>>>> f1c6c197fecea369d4df666aaa152583244b3f0e
+</div> --}}

@@ -3,30 +3,6 @@ var $ = require('jquery');
 
 $(document).ready(function(){
 
-<<<<<<< HEAD
-
-
-    $(".menu-icon").on("click", function(){
-
-        $("nav ul").toggleClass("showing");
-    });
-
-});
-
-
-$(window).on("scroll", function(){
-
-    if($(window).scrollTop()) {
-
-        $('nav').addClass('black');
-    }
-
-    else {
-
-        $('nav').removeClass('black');
-    }
-    
-=======
   $(".menu-icon").on("click", function(){
     $("nav ul").toggleClass("showing");
   });
@@ -43,7 +19,6 @@ $(window).on("scroll", function(){
   });
 
 
->>>>>>> f1c6c197fecea369d4df666aaa152583244b3f0e
 
 })
  /*** First we will load all of this project's JavaScript dependencies which
