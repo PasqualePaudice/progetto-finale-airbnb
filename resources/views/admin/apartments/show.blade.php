@@ -41,9 +41,28 @@
             @endforelse ($services as $key => $value)
             </ul>
 
-          </div>
+            </div>
+            <div id="map" style="width: 500px; height: 500px; margin-left:10px; margin-top:10px">
+
+
+
+             </div>
         </div>
+
       </div>
+
+        <input id="lat" type="text" name="" value="{{ $coordinate->lat }}" hidden>
+        <input id="lon" type="text" name="" value="{{ $coordinate->lon }}" hidden>
+
+
+
+
     </div>
+
+
+
+
   </div>
+
+
 @endsection

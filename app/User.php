@@ -11,7 +11,7 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    public function apartment(){
+    public function apartments(){
 
         return $this->hasMany('App\Apartment');
 

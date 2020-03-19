@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Service;
 use Illuminate\Support\Facades\Auth;
+use GuzzleHttp\Client;
+use App\Coordinate;
+use Braintree_Transaction;
+use App\Sponsor;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+
+
+
 
 class ApartmentController extends Controller
 {
@@ -19,9 +28,18 @@ class ApartmentController extends Controller
     public function index()
     {
         $apartments = Apartment::all()->where('user_id', '=', Auth::user()->id);
+
+        $apartment_sponsors = DB::table('apartment_sponsor')->get();
+
+        $now = Carbon::now();
+
+
+
+
+
         // $apartments = Apartment::all();
         return view('admin.apartments.index',[
-          'apartments' => $apartments
+          'apartments' => $apartments, 'now' => $now
         ]);
     }
 
@@ -55,12 +73,48 @@ class ApartmentController extends Controller
                 'metri_quadri' => 'required|max:5'
             ]);
 
+
+        $via = $request->indirizzo;
+        $citta = $request->city;
+        $stato = $request->state;
+        $cap = $request->cap;
+
+        $indirizzo = $via . ' ' . $citta .' '.  $cap;
+
+        $client = new Client();
+
+    	$response = $client->request('GET', 'https://api.tomtom.com/search/2/geocode/' . $indirizzo . '.json?countrySet='. $stato. '&key=YPixAIIG2SgrHPBm2WGBWUa9L4JiGcFe');
+
+    	$statusCode = $response->getStatusCode();
+
+    	$body = $response->getBody()->getContents();
+
+        $body = json_decode($body);
+
+        $prova = $body->results[0];
+
+
+        $lat = $prova->position->lat;
+        $lon = $prova->position->lon;
+
+
+
+
+
         $dati= $request->all();
 
+        $coordinate = new Coordinate();
+
+        $coordinate->lat= $lat;
+        $coordinate->lon= $lon;
+
+        $coordinate->save();
 
         $apartment = new Apartment();
 
         $apartment->fill($dati);
+
+        $apartment->coordinates_id = $coordinate->id;
 
         if (!empty($dati['cover_image'])) {
             $cover_image= $dati['cover_image'];
@@ -92,9 +146,11 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
+        $coordinate = Coordinate::where('id',$apartment->coordinates_id)->first();
+
       if ($apartment->user_id == Auth::user()->id) {
         return view('admin.apartments.show',[
-          'apartment' => $apartment
+          'apartment' => $apartment , 'coordinate' => $coordinate
         ]);
       }
       else {
@@ -173,5 +229,69 @@ class ApartmentController extends Controller
     {
       $apartment->delete();
       return redirect()->route('admin.apartments.index');
+    }
+
+    public function pay(Apartment $apartment){
+
+        return view('admin.sponsor.index',['apartment' => $apartment]);
+
+    }
+
+    public function price(Request $request , Apartment $apartment){
+
+         return view('admin.sponsor.check',['apartment' => $apartment , 'prezzo' => $request->Piano]);
+    }
+
+    public function make(Request $request) {
+
+    $price = $request->input('prezzo');
+    $apartment_id = $request->input('amp;apartment');
+    $payload = $request->input('payload', false);
+    $nonce = $payload['nonce'];
+
+    $status = Braintree_Transaction::sale([
+	'amount' => $price,
+	'paymentMethodNonce' => $nonce,
+    'customer' => [
+        'firstName'=> Auth::user()->name,
+        'lastName'=> Auth::user()->lastname,
+        'email'=> Auth::user()->email
+    ],
+	'options' => [
+	    'submitForSettlement' => True
+	]
+    ]);
+
+    if ($status->success) {
+        $start = Carbon::now();
+
+
+        if($price == '2.99'){
+            $id_price='1';
+            $end=  Carbon::now()->add(1, 'day');
+
+        }elseif($price == '5.99'){
+            $id_price='2';
+            $end=  Carbon::now()->add(72, 'hour');
+        }else{
+            $id_price='3';
+            $end=  Carbon::now()->add(144, 'hour');
+        }
+
+        $appartamento = Apartment::find($apartment_id);
+        // $sponsor = Sponsor::find($id_price);
+
+        $appartamento->sponsors()->attach($id_price,['start_sponsor'=>$start,'end_sponsor'=>$end]);
+
+        $messaggio = true;
+    }else {
+        $messaggio = false;
+    }
+
+
+
+    return response()->json($status);
+
+
     }
 }

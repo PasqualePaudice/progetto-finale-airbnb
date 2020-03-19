@@ -3,6 +3,7 @@ var $ = require('jquery');
 
 $(document).ready(function(){
 
+<<<<<<< HEAD
 
 
     $(".menu-icon").on("click", function(){
@@ -25,6 +26,24 @@ $(window).on("scroll", function(){
         $('nav').removeClass('black');
     }
     
+=======
+  $(".menu-icon").on("click", function(){
+    $("nav ul").toggleClass("showing");
+  });
+
+  $(window).on("scroll", function(){
+
+    if($(window).scrollTop()) {
+      $('nav').addClass('black');
+    }
+    else {
+      $('nav').removeClass('black');
+    }
+
+  });
+
+
+>>>>>>> f1c6c197fecea369d4df666aaa152583244b3f0e
 
 })
  /*** First we will load all of this project's JavaScript dependencies which
@@ -34,27 +53,52 @@ $(window).on("scroll", function(){
 
 require('./bootstrap');
 
-window.Vue = require('vue');
+// window.Vue = require('vue');
+//
+// /**
+//  * The following block of code may be used to automatically register your
+//  * Vue components. It will recursively scan this directory for the Vue
+//  * components and automatically register them with their "basename".
+//  *
+//  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+//  */
+//
+// // const files = require.context('./', true, /\.vue$/i)
+// // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+//
+// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+//
+// /**
+//  * Next, we will create a fresh Vue application instance and attach it to
+//  * the page. Then, you may begin adding components to this application
+//  * or customize the JavaScript scaffolding to fit your unique needs.
+//  */
+//
+//  const app = new Vue({
+//      el: '#app',
+//  });
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+import tt from '@tomtom-international/web-sdk-maps';
+import '@tomtom-international/web-sdk-maps/dist/maps-web.min.js';
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+var lat = $('#lat').val();
+var lon = $('#lon').val();
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+const map = tt.map({
+    key: "YPixAIIG2SgrHPBm2WGBWUa9L4JiGcFe",
+    container: "map",
+    style: 'tomtom://vector/1/basic-main',
+    center: [ lon , lat ],
+    zoom: 15,
+    theme:{
+    style:'main',
+    layer:'basic',
+    source:'vector'
+         }
 
-const app = new Vue({
-    el: '#app',
-});
+    });
+
+var maker=new tt.Marker().setLngLat([lon,lat]).addTo(map);
+map.addControl(new tt.FullscreenControl());
+map.addControl(new tt.NavigationControl());
