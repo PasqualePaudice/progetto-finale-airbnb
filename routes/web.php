@@ -16,9 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/dettagli', function () {
-    return view('dettagli');
-});
+
+Route::get('/dettagli', 'HomeController@dettagli')->name('dettagli');
 
 Auth::routes();
 

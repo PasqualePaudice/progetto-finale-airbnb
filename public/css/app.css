@@ -11073,3 +11073,65 @@ header nav .logo .search .search-box input:focus {
   }
 }
 
+main {
+  margin-top: 64px;
+}
+
+main .card .card-img-top {
+  height: 450px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+main .card .card-title {
+  font-weight: 700;
+}
+
+main .card .indirizzo {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+main .card .indirizzo .indirizzo-img {
+  height: 20px;
+  margin-right: 10px;
+}
+
+main .card .descrizione {
+  margin-bottom: 1rem;
+}
+
+main .card .dettagli {
+  position: relative;
+  overflow: hidden;
+}
+
+main .card .dettagli::after {
+  content: "";
+  position: absolute;
+  margin-left: 10px;
+  border-bottom: 1px solid rgba(153, 172, 194, 0.2);
+  top: 50%;
+  width: 100%;
+}
+
+main .card ul {
+  padding-left: 10px;
+}
+
+main .card ul li {
+  list-style-type: none;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+main .card ul li img {
+  height: 20px;
+  margin-right: 10px;
+}
+

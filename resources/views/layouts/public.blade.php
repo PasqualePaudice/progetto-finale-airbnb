@@ -43,6 +43,7 @@
     ></script>
 
     <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/maps.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('animate.css') }}">
 
@@ -53,10 +54,9 @@
   </head>
   <body>
 
-    <main>
       @include('layouts.partials.public-navbar')
       @yield('content')
-    </main>
+
     <script src="{{ asset('js/app.js') }}" defer></script>
   </body>
 </html>

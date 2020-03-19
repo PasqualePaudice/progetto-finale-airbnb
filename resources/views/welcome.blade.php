@@ -64,6 +64,7 @@
         </style>
     </head>
     <body>
+      <a class="btn btn-info" href="{{route('dettagli',['apartment' => '8'])}}">Visualizza</a>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
