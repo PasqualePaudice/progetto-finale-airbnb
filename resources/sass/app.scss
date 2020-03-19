@@ -6,3 +6,10 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// @import 'partials/_variables';
+// @import 'partials/_mixin';
+@import 'dettagli/_general';
+@import 'dettagli/_header';
+@import 'dettagli/_content';
+// @import 'dettagli/_footer';

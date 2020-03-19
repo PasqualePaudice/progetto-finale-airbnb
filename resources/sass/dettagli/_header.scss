@@ -1,0 +1,173 @@
+header{
+  width: 100%;
+  background-color: #b0c6f5;
+  height: 64px;
+  nav{
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    background-color: #b0c6f5;
+    &.black {
+      ul {
+        background: #000;
+      }
+    }
+    ul {
+      list-style: none;
+      background: rgba(0, 0, 0, 0);
+      overflow: hidden;
+      color: #fff;
+      padding: 0;
+      text-align: right;
+      margin: 0;
+      transition: 1s;
+      li {
+        display: inline-block;
+        padding: 20px;
+        a {
+          text-decoration: none;
+          color: #fff;
+          font-size: 14px;
+          &:hover{
+            text-decoration: none;
+            color: rgba(255, 255, 255, .9);
+            transition: all .2s;
+          }
+        }
+      }
+    }
+    .logo {
+      position: fixed;
+      float: left;
+      margin: 10px 36px;
+      img {
+        height: 50px;
+      }
+    }
+    .menu-icon {
+      width: 100%;
+      background: #000;
+      text-align: right;
+      box-sizing: border-box;
+      padding: 15px 24px;
+      cursor: pointer;
+      color: #fff;
+      display: none;
+    }
+    .logo {
+      position: fixed;
+      float: left;
+      margin: 10px 36px;
+      img{
+        height: 50px;
+      }
+      .search {
+        display: inline-block;
+        position: relative;
+        left: 50px;
+        top: -5px;
+        .search-box {
+          span{
+            z-index: -1;
+            position: absolute;
+            border: 2px solid #fff;
+            top: 0;
+            width: 25px;
+            height: 25px;
+            transition: all .25s ease-in .25s;
+            border-radius: 25px;
+            left: 0;
+            &::before{
+              transition: all .25s ease-in .25s;
+              transform-origin: left top;
+              content: '';
+              position: absolute;
+              width: 10px;
+              height: 5px;
+              border-radius: 5px;
+              background: #fff;
+              transform: rotate(45deg) translate(26px, -2px);
+            }
+          }
+          input {
+            border: none;
+            background: none;
+            width: 25px;
+            height: 25px;
+            transition: all .25s ease-in .25s;
+            z-index: 1;
+            color: transparent;
+            font-size: 1em;
+            line-height: 25px;
+            &:hover {
+              cursor: pointer;
+              + {
+        				span {
+        					background: rgba(255, 255, 255, .2);
+        				}
+        			}
+
+            }
+            &:focus {
+              cursor: text;
+              + {
+                span {
+                  width: 200px;
+                  &::before {
+                    width: 2px;
+                    opacity: 0;
+                    transition: all .25s ease-in;
+                  }
+                }
+              }
+            }
+            &:focus {
+              width: 200px;
+              padding: 0 10px;
+              outline: none;
+              color: black;
+              background: none;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+
+  header{
+    nav {
+      .logo {
+        position: fixed;
+        top: 0;
+        margin-top: 10px;
+        margin-left: 18px;
+      }
+      .menu-icon {
+        display: block;
+      }
+      ul {
+        max-height: 0px;
+        background: #000;
+        &.showing {
+          max-height: 40em;
+        }
+        li {
+          box-sizing: border-box;
+          width: 100%;
+          padding: 24px 0;
+          text-align: center;
+        }
+      }
+      &.black {
+        ul {
+        background: #000;
+        }
+      }
+
+    }
+
+  }
+}
