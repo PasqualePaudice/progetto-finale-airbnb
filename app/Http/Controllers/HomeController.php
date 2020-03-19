@@ -29,10 +29,11 @@ class HomeController extends Controller
       return view('admin.home');
     }
 
-    public function dettagli(Apartment $apartment){
+    public function dettagli($id){
+        $apartment=Apartment::where('id',$id)->first();
+        dd($apartment);
+      $coordinate = Coordinate::where('id',$apartment->coordinates_id)->first();
 
-      $coordinate = Coordinate::where('id','1')->first();
-      // dd($apartment->coordinates_id);
       return view('dettagli',[
         'apartment' => $apartment , 'coordinate' => $coordinate
       ]);

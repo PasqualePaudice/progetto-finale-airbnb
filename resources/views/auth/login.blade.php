@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -68,7 +69,7 @@
 <div class="container">
         <div class="modal-dialog modal-login">
             <div class="modal-content">
-                <div class="modal-header">				
+                <div class="modal-header">
                     <h4 class="modal-title">Sign in</h4>
                 </div>
                 <div class="modal-body">
@@ -82,7 +83,7 @@
                             </span>
                             @enderror
                         </div>
-                        
+
 
                         <div class="form-group">
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required autocomplete="current-password">
@@ -100,13 +101,13 @@
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary btn-block btn-lg" value="{{ __('Login') }}">
                         </div>
-                    </form>	
-                    
-                    
+                    </form>
+
+
                     <p class="hint-text small"><a href="#">Forgot Your Password?</a></p>
                 </div>
             </div>
-        </div>      
+        </div>
 </div>
 
 @endsection --}}
