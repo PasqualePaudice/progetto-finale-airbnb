@@ -51,8 +51,8 @@
 
       </div>
 
-        <input id="lat" type="text" name="" value="{{ $coordinate->lat}}" hidden>
-        <input id="lon" type="text" name="" value="{{ $coordinate->lon}}" hidden>
+        <input id="lat" type="text" name="" value="{{ $coordinate->lat }}" hidden>
+        <input id="lon" type="text" name="" value="{{ $coordinate->lon }}" hidden>
 
 
 
