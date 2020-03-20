@@ -6,6 +6,7 @@
                 <p class="">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa facere, nam, labore, deleniti cupiditate ex expedita fugiat modi voluptas quam vero!</p>
             </div>
         </div>
+        <div class='barra_ricerca_tomtom'></div>
     </div>
 
 
@@ -58,6 +59,50 @@
             </div>
         </div>
     </div>
+    <form class="" action="{{ route('cerca') }}" method="post">
+        @csrf
+        <input id="search_lat" type="text" name="lat" value="" hidden>
+        <input id="search_lon" type="text" name="lon" value="" hidden>
+        <input id="search_name" type="text" name="name" value="" hidden>
+        <button id="search_btn" type="submit" hidden></button>
+    </form>
+
+
+    <script>
+
+        // Options for the fuzzySearch service
+        var searchOptions = {
+            key: 'YPixAIIG2SgrHPBm2WGBWUa9L4JiGcFe',
+            language: 'it-IT',
+            limit: 5
+        };
+        // Options for the autocomplete service
+        var autocompleteOptions = {
+            key: 'YPixAIIG2SgrHPBm2WGBWUa9L4JiGcFe',
+            language: 'it-IT',
+        };
+        var searchBoxOptions = {
+            minNumberOfCharacters: 0,
+            searchOptions: searchOptions,
+            autocompleteOptions: autocompleteOptions
+        };
+        var ttSearchBox = new tt.plugins.SearchBox(tt.services, searchBoxOptions);
+        document.querySelector('.barra_ricerca_tomtom').appendChild(ttSearchBox.getSearchBoxHTML());
+        ttSearchBox.on('tomtom.searchbox.resultselected', function(data) {
+            var name = data.data.result.address.municipality;
+            var lat = data.data.result.position['lat'];
+            var lon = data.data.result.position['lng'];
+            console.log(data.data.result.position);
+            console.log(lat);
+            console.log(lon);
+
+            document.querySelector("#search_lat").setAttribute('value', lat);
+            document.querySelector("#search_lon").setAttribute('value', lon);
+            document.querySelector("#search_name").setAttribute('value', name);
+            document.getElementById("search_btn").click();
+
+        });
+    </script>
 
 
             {{-- <div class="col-xl-3 col-lg-4 col-md-6 mb-4">

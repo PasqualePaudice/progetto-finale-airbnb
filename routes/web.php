@@ -17,6 +17,8 @@ Route::get('/','PublicController@index')->name('publicHome');
 
 Route::get('/dettagli/{apartment}', 'PublicController@dettagli')->name('dettagli');
 
+Route::post('/search', 'PublicController@search')->name('cerca');
+
 Auth::routes();
 
 Route::get('/admin', 'HomeController@index')->name('home');
