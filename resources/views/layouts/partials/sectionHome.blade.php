@@ -6,6 +6,7 @@
                 <p class="">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa facere, nam, labore, deleniti cupiditate ex expedita fugiat modi voluptas quam vero!</p>
             </div>
         </div>
+        <div class='barra_ricerca_tomtom'></div>
     </div>
 
 
@@ -58,6 +59,31 @@
             </div>
         </div>
     </div>
+
+
+    <script>
+        // Options for the fuzzySearch service
+        var searchOptions = {
+            key: 'YPixAIIG2SgrHPBm2WGBWUa9L4JiGcFe',
+            language: 'it-IT',
+            limit: 5
+        };
+        // Options for the autocomplete service
+        var autocompleteOptions = {
+            key: 'YPixAIIG2SgrHPBm2WGBWUa9L4JiGcFe',
+            language: 'it-IT',
+        };
+        var searchBoxOptions = {
+            minNumberOfCharacters: 0,
+            searchOptions: searchOptions,
+            autocompleteOptions: autocompleteOptions
+        };
+        var ttSearchBox = new tt.plugins.SearchBox(tt.services, searchBoxOptions);
+        document.querySelector('.barra_ricerca_tomtom').appendChild(ttSearchBox.getSearchBoxHTML());
+        ttSearchBox.on('tomtom.searchbox.resultselected', function(data) {
+            console.log(data);
+        });
+    </script>
 
 
             {{-- <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
