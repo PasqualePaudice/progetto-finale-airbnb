@@ -10890,6 +10890,20 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+#a {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.team-4 {
+  height: 200px;
+}
+
+div .tt-search-box {
+  margin: 0;
+}
+
 header {
   width: 100%;
   background-color: #b0c6f5;
@@ -11066,7 +11080,7 @@ nav#prova ul li a:hover {
 }
 
 .carousel-item .row {
-  margin: 12% 0;
+  margin: 25px 0;
 }
 
 .carousel-item h1 {
@@ -11572,6 +11586,10 @@ header nav .logo .search .search-box input:focus {
 
 main {
   margin-top: 64px;
+}
+
+main .card {
+  width: 100%;
 }
 
 main .card .card-img-top {

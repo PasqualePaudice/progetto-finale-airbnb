@@ -6,15 +6,16 @@
           <i class="fa fa-bars fa-2x"></i>
         </div>
 
-        <div class="logo">
-          <a href="{{ route('publicHome')}}"><img src="{{ asset("img/LogoBoolBnB.png")  }}" alt="logo boolBnB"/></a>
+        <div class="logo" style="display: flex; align-items: center; height: 64px; margin: 0">
+          <a href="{{ route('publicHome')}}" style="margin-top: 6px; margin-left: 14px; margin-right: 14px;"><img src="{{ asset("img/LogoBoolBnB.png")  }}" alt="logo boolBnB"/></a>
 
-              <div class="search">
+              {{-- <div class="search">
                   <div class="search-box">
                       <input type="text">
                       <span></span>
                   </div>
-              </div>
+              </div> --}}
+              <div class='barra_ricerca_tomtom'></div>
         </div>
 
         <div class="menu">
