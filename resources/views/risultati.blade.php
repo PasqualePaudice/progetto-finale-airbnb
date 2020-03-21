@@ -4,7 +4,11 @@
     <main>
         <div class="section">
             <div class="row">
+                
                 @foreach ($apartments as $apartment)
+                    @if ($apartment != null)
+
+
                     <div class=" col-xl-3 col-lg-4 col-md-6 mb-4" >
                         <a id="a" href="{{route('dettagli',['apartment'=>$apartment->id])}}">
                         </a>
@@ -32,6 +36,8 @@
                                 </div>
 
                     </div>
+
+                    @endif
 
                 @endforeach
 
