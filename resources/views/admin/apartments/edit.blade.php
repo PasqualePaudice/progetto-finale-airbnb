@@ -36,8 +36,23 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="indirizzo">Indirizzo</label>
+                    <label for="indirizzo">via</label>
                     <input id="indirizzo" class="form-control" type="text" name="indirizzo" value="{{ old('indirizzo', $apartment->indirizzo) }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="city">città</label>
+                    <input id="city" class="form-control" type="text" name="city" value="{{ old('city',$apartment->city) }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="state">Stato</label>
+                    <input id="state" class="form-control" type="text" name="state" value="{{ old('state',$apartment->state) }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="cap">CAP</label>
+                    <input id="cap" class="form-control" type="text" name="cap" value="{{ old('cap',$apartment->cap) }}">
                 </div>
 
                 <div class="form-group">

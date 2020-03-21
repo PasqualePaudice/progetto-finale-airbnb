@@ -190,6 +190,8 @@ class ApartmentController extends Controller
         $request->validate([
                 'title' => 'required|max:255',
                 'indirizzo' => 'required|max:100',
+                'city' => 'required|max:100',
+                'state' => 'required|max:100',
                 'descrizione_appartamento'=> 'required',
                 'posti_letto'=> 'required|max:2',
                 'stanze' => 'required|max:2',
@@ -227,7 +229,20 @@ class ApartmentController extends Controller
      */
     public function destroy(Apartment $apartment)
     {
-      $apartment->delete();
+    // $coordinate=Coordinate::all()->where('id',$apartment->coordinates_id);
+
+      if(!empty($apartment->cover_image)) {
+          // elimino l'immagine di copertina
+          Storage::delete($apartment->cover_image);
+      }
+      if($apartment->sponsors->isNotEmpty()) {
+          $apartment->sponsors()->sync([]);
+      }
+
+
+
+
+       $apartment->delete();
       return redirect()->route('admin.apartments.index');
     }
 

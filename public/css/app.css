@@ -10896,14 +10896,6 @@ body {
   height: 100%;
 }
 
-.team-4 {
-  height: 200px;
-}
-
-div .tt-search-box {
-  margin: 0;
-}
-
 header {
   width: 100%;
   background-color: #b0c6f5;
@@ -11080,7 +11072,7 @@ nav#prova ul li a:hover {
 }
 
 .carousel-item .row {
-  margin: 25px 0;
+  margin: 7% 0;
 }
 
 .carousel-item h1 {
