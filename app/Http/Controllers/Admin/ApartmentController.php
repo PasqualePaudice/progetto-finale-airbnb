@@ -229,7 +229,8 @@ class ApartmentController extends Controller
      */
     public function destroy(Apartment $apartment)
     {
-    // $coordinate=Coordinate::all()->where('id',$apartment->coordinates_id);
+        // trova il record coordinate corrispondente e lo prende con first()
+      $coordinate=Coordinate::all()->where('id',$apartment->coordinates_id)->first();
 
       if(!empty($apartment->cover_image)) {
           // elimino l'immagine di copertina
@@ -239,10 +240,10 @@ class ApartmentController extends Controller
           $apartment->sponsors()->sync([]);
       }
 
-
-
-
-       $apartment->delete();
+      // cancella prima l'appartamento e perde il legame
+      $apartment->delete();
+      // cancella poi le coordinate nella tabella, che non sono più legate da vincoli
+      $coordinate->delete();
       return redirect()->route('admin.apartments.index');
     }
 
