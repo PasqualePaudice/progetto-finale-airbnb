@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Apartment extends Model{
 
     protected  $fillable = [
@@ -28,7 +29,9 @@ class Apartment extends Model{
             return $this->hasOne('App\Coordinate');
     }
 
-
+    public function visits() {
+        return $this->hasMany('App\Visit');
+    }
 
 
 }
