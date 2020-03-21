@@ -27,6 +27,7 @@ Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->
 
     Route::resource('/apartments','ApartmentController');
     Route::get('/apartments/{apartment}/sponsor','ApartmentController@pay')->name('apartments.sponsor');
+    Route::get('/apartments/{apartment}/statistic','ApartmentController@statistic')->name('apartments.statistic');
     Route::post('/apartments/{apartment}/sponsor', 'ApartmentController@price')->name('payment.price');
     Route::get('/payment/make', 'ApartmentController@make')->name('payment.make');
 

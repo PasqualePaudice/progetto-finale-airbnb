@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Coordinate;
 use App\Apartment;
+use App\Visit;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Client;
@@ -24,7 +25,18 @@ class PublicController extends Controller
         return view('welcome',['apartments' => $apartments, 'mese_fa'=>$un_mese_fa,'now'=>$adesso]);
     }
 
-    public function dettagli(Apartment $apartment,Request $request){
+    public function dettagli(Apartment $apartment, Request $request){
+
+        $is_page_refreshed = (isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] == 'max-age=0');
+
+        $ip = $request->ip();
+
+        if(!$is_page_refreshed ) {
+            $visit = new Visit();
+            $visit->apartment_id = $apartment->id;
+            $visit->guest_ip = $ip;
+            $visit->save();
+        };
 
         $coordinate = Coordinate::where('id',$apartment->coordinates_id)->first();
 

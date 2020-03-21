@@ -310,4 +310,8 @@ class ApartmentController extends Controller
 
 
     }
+
+    public function statistic(Apartment $apartment) {
+        return view('admin.apartments.statistic', ['apartment' => $apartment]);
+    }
 }

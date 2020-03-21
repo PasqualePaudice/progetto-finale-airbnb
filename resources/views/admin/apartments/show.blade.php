@@ -4,15 +4,18 @@
 @section('content')
   <div class="container">
     <div class="row mb-3">
-      <div class="col-sm-12">
+      <div class="col-sm-6">
         <h1>Dettagli appartamento</h1>
+      </div>
+      <div class="col-sm-6 d-flex align-items-center justify-content-end">
+        <a class="btn btn-info float-right" href="{{ route('admin.apartments.statistic', ['apartment' => $apartment->id])}}">Vai alle statistiche</a>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-12">
         <div class="card" style="width: 100%;">
 
-          <img style="width:200px" class="card-img-top" src="{{$apartment->cover_image ? asset('storage/' . $apartment->cover_image) : asset('storage/uploads/unnamed.jpg')}}" alt="Card image cap">
+          <img class="card-img-top" src="{{$apartment->cover_image ? asset('storage/' . $apartment->cover_image) : asset('storage/uploads/unnamed.jpg')}}" alt="Card image cap">
           <div class="card-body">
             <h3 class="card-title">{{$apartment->title}}</h3>
             <p class="card-text">{{$apartment->descrizione_appartamento}}</p>
