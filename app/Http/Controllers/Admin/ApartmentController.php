@@ -12,6 +12,7 @@ use GuzzleHttp\Client;
 use App\Coordinate;
 use Braintree_Transaction;
 use App\Sponsor;
+use App\Visit;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -314,4 +315,14 @@ class ApartmentController extends Controller
     public function statistic(Apartment $apartment) {
         return view('admin.apartments.statistic', ['apartment' => $apartment]);
     }
+
+    public function chart(Apartment $apartment) {
+        $result = Visit::where(DB::raw("(DATE_FORMAT(created_at,'%Y-%m'))"),date('Y-m'))
+                    ->orderBy('created_at','ASC')
+                    ->get();
+
+        $
+        $collection = collect($result);
+        return response()->json($result);
+      }
 }
