@@ -12,9 +12,13 @@
     </div>
     <div class="row">
         <div class="col-sm-12">
-            <canvas id="myChart" width="400" height="400"></canvas>
+            <canvas id="canvas" height="280" width="600"></canvas>
         </div>
-
+    </div>
+    <div class="row mt-5">
+        <div class="col-sm-12 text-center">
+            <h2>Numero totale di visualizzazioni per il mese corrente: <span id="num_vis"></span></h2>
+        </div>
     </div>
 </div>
 
@@ -22,17 +26,53 @@
 
 var url = "{{ route('admin.apartments.chart', ['apartment' => $apartment])}}";
 var Days = new Array();
-var Labels = new Array();
 var Views = new Array();
 $(document).ready(function(){
+
     $.get(url, function(response){
-        console.log(response);
-        response.forEach(function(data){
-            Days.push(data.created_at);
-        });
+        for (var variable in response) {
+            // questo cicla i count (numero delle views)
+            Views.push(response[variable]);
+            // queste sono le date
+            Days.push(variable);
+        }
+        var Sum = 0;
+        for (var i = 0; i < Views.length; i++) {
+            Sum += parseInt(Views[i]);
+        }
+        document.getElementById("num_vis").innerHTML = Sum;
+        var ctx = document.getElementById("canvas").getContext('2d');
+        var myChart = new Chart(ctx, {
+                  type: 'line',
+                  data: {
+                      labels: Days,
+                      datasets: [{
+                          label: 'Numero Visualizzazioni',
+                          data: Views,
+                          backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)'
+                        ],
+                          borderWidth: 1
+                      }]
+                  },
+                  options: {
+                      scales: {
+                          yAxes: [{
+                              ticks: {
+                                  beginAtZero:true
+                              }
+                          }]
+                      }
+                  }
+              });
     });
     console.log(Days);
-})
+    console.log(Views);
+
+});
 
 
 

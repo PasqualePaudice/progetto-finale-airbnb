@@ -321,8 +321,18 @@ class ApartmentController extends Controller
                     ->orderBy('created_at','ASC')
                     ->get();
 
-        $
-        $collection = collect($result);
-        return response()->json($result);
+        $date = [];
+        $array_results = $result->toArray();
+        foreach ($array_results as $key) {
+            $creata = $key['created_at'];
+            $muta = substr($creata,0, 10);
+            array_push($date, $muta);
+        };
+        $collection = collect($date);
+
+        $counted = $collection->countBy();
+
+        $final = $counted->all();
+        return response($final);
       }
 }
