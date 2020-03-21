@@ -318,6 +318,7 @@ class ApartmentController extends Controller
 
     public function chart(Apartment $apartment) {
         $result = Visit::where(DB::raw("(DATE_FORMAT(created_at,'%Y-%m'))"),date('Y-m'))
+                    ->where('apartment_id', $apartment->id)
                     ->orderBy('created_at','ASC')
                     ->get();
 

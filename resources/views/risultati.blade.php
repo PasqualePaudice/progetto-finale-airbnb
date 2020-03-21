@@ -4,7 +4,7 @@
     <main>
         <div class="section">
             <div class="row">
-                
+
                 @foreach ($apartments as $apartment)
                     @if ($apartment != null)
 
@@ -13,7 +13,7 @@
                         <a id="a" href="{{route('dettagli',['apartment'=>$apartment->id])}}">
                         </a>
                                 <div class="bg-white rounded shadow-sm" >
-                                    <img src="{{asset('storage/'.$apartment->cover_image)}}" alt="" class="img-fluid card-img-top" >
+                                    <img src="{{asset('storage/'.$apartment->cover_image)}}" alt="" class="img-fluid card-img-top team-4" >
                                     <div class="p-4">
                                         <h5> {{$apartment->title}}</h5>
                                         <p class="small text-muted mb-0">{{$apartment->city}}</p>
