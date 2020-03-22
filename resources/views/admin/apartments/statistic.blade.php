@@ -5,10 +5,13 @@
 
 
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-sm-12">
-            <h1>Statistiche Appartmento {{$apartment->id}}</h1>
-        </div>
+    <div class="row justify-content-between">
+            <div class="col-sm-8">
+                <h1>Statistiche per l'appartamento {{$apartment->id}}</h1>
+            </div>
+            <div class="col-sm-4 text-right">
+                <a class="btn btn-success mt-2" href="{{route('admin.apartments.show',['apartment' => $apartment->id])}}">Torna alla pagina dettagli</a>
+            </div>
     </div>
     <div class="row">
         <div class="col-sm-12">

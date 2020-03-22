@@ -28,6 +28,7 @@
         <h1>Dettagli appartamento</h1>
       </div>
       <div class="col-sm-6 d-flex align-items-center justify-content-end">
+        <a class="btn btn-success mr-2"href="{{ route('admin.apartments.index')}}">Torna agli Appartamenti</a>
         <a class="btn btn-warning mr-2"href="{{ route('admin.apartments.messages', ['apartment' => $apartment->id])}}">Vai ai messaggi</a>
         <a class="btn btn-info float-right" href="{{ route('admin.apartments.statistic', ['apartment' => $apartment->id])}}">Vai alle statistiche</a>
       </div>

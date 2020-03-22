@@ -30,6 +30,7 @@ Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->
     Route::get('/apartments/{apartment}/sponsor','ApartmentController@pay')->name('apartments.sponsor');
     Route::get('/apartments/{apartment}/statistic','ApartmentController@statistic')->name('apartments.statistic');
     Route::get('/apartments/{apartment}/messages','ApartmentController@messages')->name('apartments.messages');
+    Route::delete('/apartments/{apartment}/messages/{message}/destroy','ApartmentController@messagesDestroy')->name('apartments.messages.destroy');
     Route::get('/apartments/{apartment}/messages/{message}','ApartmentController@messagesShow')->name('apartments.messages.show');
     Route::get('/apartments/{apartment}/statistic/chart','ApartmentController@chart')->name('apartments.chart');
     Route::post('/apartments/{apartment}/sponsor', 'ApartmentController@price')->name('payment.price');

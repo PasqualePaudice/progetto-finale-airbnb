@@ -32,7 +32,11 @@
                             <th>{{$message->created_at}}</th>
                             <td>
                                 <a class="btn btn-primary" href="{{route('admin.apartments.messages.show',['apartment' => $apartment, 'message' => $message])}}">Visualizza</a>
-                                <a class="btn btn-danger" href="#">Elimina</a>
+                                <form class="d-inline-block" action="{{route('admin.apartments.messages.destroy',['apartment' => $apartment, 'message' => $message])}}" method="post">
+                                  @csrf
+                                  @method('DELETE')
+                                  <input class="btn btn-danger d-inline-block" type="submit" value="Elimina">
+                                </form>
                             </td>
                         </tr>
                     @else
@@ -41,7 +45,11 @@
                             <td>{{$message->created_at}}</td>
                             <td>
                                 <a class="btn btn-primary" href="{{route('admin.apartments.messages.show',['apartment' => $apartment, 'message' => $message])}}">Visualizza</a>
-                                <a class="btn btn-danger" href="#">Elimina</a>
+                                <form class="d-inline-block" action="{{route('admin.apartments.messages.destroy',['apartment' => $apartment, 'message' => $message])}}" method="post">
+                                  @csrf
+                                  @method('DELETE')
+                                  <input class="btn btn-danger d-inline-block" type="submit" value="Elimina">
+                                </form>
                             </td>
                         </tr>
                     @endif

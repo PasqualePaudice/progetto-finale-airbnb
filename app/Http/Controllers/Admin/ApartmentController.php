@@ -362,5 +362,10 @@ class ApartmentController extends Controller
         return view('admin.apartments.showmessage', ['apartment' => $apartment, 'message'=>$message]);
     }
 
+    public function messagesDestroy(Apartment $apartment, Message $message) {
+        $message->delete();
+        return redirect()->route('admin.apartments.messages', [ 'apartment' => $apartment]);
+    }
+
 
 }
