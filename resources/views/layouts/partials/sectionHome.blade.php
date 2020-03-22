@@ -24,7 +24,7 @@
 
                 @foreach ($apartments as $apartment)
 
-                    <div class=" col-xl-3 col-lg-4 col-md-6 mb-4" >
+                    <div class="   col-xl-3 col-lg-4 col-md-6 mb-4" >
 
 
                             <a id="a" href="{{route('dettagli',['apartment'=>$apartment->id])}}">   </a>
