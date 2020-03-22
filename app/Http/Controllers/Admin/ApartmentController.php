@@ -347,5 +347,14 @@ class ApartmentController extends Controller
 
         $final = $counted->all();
         return response($final);
-      }
+    }
+
+    public function messages(Apartment $apartment) {
+        $messages = $apartment->messages()
+                    ->orderBy('created_at', 'DESC')
+                    ->get();
+        return view('admin.apartments.messages', ['apartment' => $apartment, 'messages'=>$messages]);
+    }
+
+
 }
