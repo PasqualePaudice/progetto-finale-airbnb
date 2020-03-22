@@ -149,10 +149,13 @@ class ApartmentController extends Controller
     public function show(Apartment $apartment)
     {
         $coordinate = Coordinate::where('id',$apartment->coordinates_id)->first();
-
+        $messages = $apartment->messages()
+                    ->orderBy('created_at', 'DESC')
+                    ->get();
       if ($apartment->user_id == Auth::user()->id) {
         return view('admin.apartments.show',[
-          'apartment' => $apartment , 'coordinate' => $coordinate
+          'apartment' => $apartment , 'coordinate' => $coordinate,
+          'messages' => $messages
         ]);
       }
       else {
