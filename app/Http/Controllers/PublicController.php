@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Coordinate;
 use App\Apartment;
 use App\Visit;
+use App\Message;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Client;
@@ -67,5 +68,13 @@ class PublicController extends Controller
         $un_mese_fa = $adesso->copy()->subDays('31');
         return view('risultati', [ 'apartments' => $filtered_results, 'now' => $adesso, 'mese_fa'=>$un_mese_fa ]);
 
+    }
+    public function storeMessage(Request $request, Apartment $apartment){
+        $dati = $request->all();
+        $message = new Message();
+        $message->fill($dati);
+        $message->apartment_id = $apartment->id;
+        $message->save();
+        return redirect ('dettagli/'. $apartment->id )->with('message', 'Messaggio inviato correttamente!');
     }
 }

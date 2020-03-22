@@ -13,6 +13,7 @@ use App\Coordinate;
 use Braintree_Transaction;
 use App\Sponsor;
 use App\Visit;
+use App\Message;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 

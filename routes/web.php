@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','PublicController@index')->name('publicHome');
 
 Route::get('/dettagli/{apartment}', 'PublicController@dettagli')->name('dettagli');
+Route::post('/dettagli/{apartment}', 'PublicController@storeMessage')->name('messaggio');
 
 Route::post('/search', 'PublicController@search')->name('cerca');
 

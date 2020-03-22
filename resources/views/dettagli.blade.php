@@ -5,6 +5,15 @@
 
   <main>
     <div class="container">
+        @if (session('message'))
+            <div class="row text-center">
+                <div class="col-sm-12">
+                    <div class="alert alert-success">
+                        {{ session('message') }}
+                    </div>
+                </div>
+            </div>
+        @endif
       <div class="row">
         <div class="card mb-3">
           <img class="card-img-top" src="{{asset('storage/'.$apartment->cover_image)}}" alt="Card image cap">
@@ -68,7 +77,8 @@
                 </div>
                 <div class="col-sm-6">
                     <h4>Contatta il proprietario</h4>
-                    <form class="" action="#" method="post">
+                    <form class="" action="{{route('messaggio',['apartment'=>$apartment->id])}}" method="post">
+                        @csrf
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Indirizzo Email</label>
                             <input type="email" class="form-control" id="exampleFormControlInput1"
