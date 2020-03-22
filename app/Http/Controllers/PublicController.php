@@ -11,6 +11,7 @@ use App\Message;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Auth;
 
 class PublicController extends Controller
 {
@@ -31,13 +32,14 @@ class PublicController extends Controller
         $is_page_refreshed = (isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] == 'max-age=0');
 
         $ip = $request->ip();
-
-        if(!$is_page_refreshed ) {
-            $visit = new Visit();
-            $visit->apartment_id = $apartment->id;
-            $visit->guest_ip = $ip;
-            $visit->save();
-        };
+        if (!(Auth::user() && Auth::user()->id == $apartment->user_id) ) {
+            if(!$is_page_refreshed ) {
+                $visit = new Visit();
+                $visit->apartment_id = $apartment->id;
+                $visit->guest_ip = $ip;
+                $visit->save();
+            };
+        }
 
         $coordinate = Coordinate::where('id',$apartment->coordinates_id)->first();
 
