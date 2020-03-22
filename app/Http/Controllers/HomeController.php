@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Coordinate;
 use App\Apartment;
+use App\Message;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -26,7 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-      return view('admin.home');
+        return view('admin.home');
     }
 
     public function dettagli($id){

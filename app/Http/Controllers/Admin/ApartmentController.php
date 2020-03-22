@@ -13,6 +13,7 @@ use App\Coordinate;
 use Braintree_Transaction;
 use App\Sponsor;
 use App\Visit;
+use App\Message;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -148,10 +149,13 @@ class ApartmentController extends Controller
     public function show(Apartment $apartment)
     {
         $coordinate = Coordinate::where('id',$apartment->coordinates_id)->first();
-
+        $messages = $apartment->messages()
+                    ->orderBy('created_at', 'DESC')
+                    ->get();
       if ($apartment->user_id == Auth::user()->id) {
         return view('admin.apartments.show',[
-          'apartment' => $apartment , 'coordinate' => $coordinate
+          'apartment' => $apartment , 'coordinate' => $coordinate,
+          'messages' => $messages
         ]);
       }
       else {
@@ -232,6 +236,8 @@ class ApartmentController extends Controller
     {
         // trova il record coordinate corrispondente e lo prende con first()
       $coordinate=Coordinate::all()->where('id',$apartment->coordinates_id)->first();
+      $visits = Visit::all()->where('apartment_id',$apartment->id);
+      $messages = Message::all()->where('apartment_id',$apartment->id);
 
       if(!empty($apartment->cover_image)) {
           // elimino l'immagine di copertina
@@ -245,6 +251,12 @@ class ApartmentController extends Controller
       $apartment->delete();
       // cancella poi le coordinate nella tabella, che non sono più legate da vincoli
       $coordinate->delete();
+      foreach ($messages as $message) {
+          $message->delete();
+      };
+      foreach ($visits as $visit) {
+          $visit->delete();
+      };
       return redirect()->route('admin.apartments.index');
     }
 
@@ -335,5 +347,25 @@ class ApartmentController extends Controller
 
         $final = $counted->all();
         return response($final);
-      }
+    }
+
+    public function messages(Apartment $apartment) {
+        $messages = $apartment->messages()
+                    ->orderBy('created_at', 'DESC')
+                    ->get();
+        return view('admin.apartments.messages', ['apartment' => $apartment, 'messages'=>$messages]);
+    }
+
+    public function messagesShow(Apartment $apartment, Message $message) {
+        $message->read = 1;
+        $message->update();
+        return view('admin.apartments.showmessage', ['apartment' => $apartment, 'message'=>$message]);
+    }
+
+    public function messagesDestroy(Apartment $apartment, Message $message) {
+        $message->delete();
+        return redirect()->route('admin.apartments.messages', [ 'apartment' => $apartment]);
+    }
+
+
 }

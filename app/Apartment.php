@@ -32,6 +32,9 @@ class Apartment extends Model{
     public function visits() {
         return $this->hasMany('App\Visit');
     }
+    public function messages() {
+        return $this->hasMany('App\Message');
+    }
 
 
 }

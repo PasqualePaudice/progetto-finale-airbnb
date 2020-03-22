@@ -3,11 +3,33 @@
 
 @section('content')
   <div class="container">
+      @php
+        $number_unread = 0;
+      @endphp
+
+      @foreach ($messages as $message)
+          @if ($message->read === 0)
+              @php
+                  $number_unread++
+              @endphp
+          @endif
+      @endforeach
+
+      @if ($number_unread != 0)
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                 Nuovi messaggi: <strong>{{$number_unread}}</strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+      @endif
     <div class="row mb-3">
       <div class="col-sm-6">
         <h1>Dettagli appartamento</h1>
       </div>
       <div class="col-sm-6 d-flex align-items-center justify-content-end">
+        <a class="btn btn-success mr-2"href="{{ route('admin.apartments.index')}}">Torna agli Appartamenti</a>
+        <a class="btn btn-warning mr-2"href="{{ route('admin.apartments.messages', ['apartment' => $apartment->id])}}">Vai ai messaggi</a>
         <a class="btn btn-info float-right" href="{{ route('admin.apartments.statistic', ['apartment' => $apartment->id])}}">Vai alle statistiche</a>
       </div>
     </div>
