@@ -14,3 +14,23 @@ body {
 .team-4{
   height: 200px;
 }
+
+.barra_ricerca_tomtom{
+    position: relative;
+    bottom:5px;
+    .tt-search-box{
+        border-radius:1000px;
+    }
+
+    .tt-search-box-input-container{
+        border-radius:1000px;
+    }
+    .tt-search-box-result-list-container{
+        border-radius:10px;
+    }
+
+    svg{
+        fill:#B0C6F5;
+    }
+
+}
