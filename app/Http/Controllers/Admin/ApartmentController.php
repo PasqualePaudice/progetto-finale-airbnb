@@ -233,6 +233,8 @@ class ApartmentController extends Controller
     {
         // trova il record coordinate corrispondente e lo prende con first()
       $coordinate=Coordinate::all()->where('id',$apartment->coordinates_id)->first();
+      $visits = Visit::all()->where('apartment_id',$apartment->id);
+      $messages = Message::all()->where('apartment_id',$apartment->id);
 
       if(!empty($apartment->cover_image)) {
           // elimino l'immagine di copertina
@@ -246,6 +248,12 @@ class ApartmentController extends Controller
       $apartment->delete();
       // cancella poi le coordinate nella tabella, che non sono più legate da vincoli
       $coordinate->delete();
+      foreach ($messages as $message) {
+          $message->delete();
+      };
+      foreach ($visits as $visit) {
+          $visit->delete();
+      };
       return redirect()->route('admin.apartments.index');
     }
 
