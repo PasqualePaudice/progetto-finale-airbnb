@@ -356,5 +356,11 @@ class ApartmentController extends Controller
         return view('admin.apartments.messages', ['apartment' => $apartment, 'messages'=>$messages]);
     }
 
+    public function messagesShow(Apartment $apartment, Message $message) {
+        $message->read = 1;
+        $message->update();
+        return view('admin.apartments.showmessage', ['apartment' => $apartment, 'message'=>$message]);
+    }
+
 
 }
