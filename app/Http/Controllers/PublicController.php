@@ -52,7 +52,8 @@ class PublicController extends Controller
     public function search(Request $request){
 
         if ($request->ajax()) {
-            return response()->json($request->all());
+            $services = $request->service;
+            return response()->json($services);
         };
         $dati = $request->all();
 

@@ -4,10 +4,14 @@
     <main>
         <div class="container">
             <div class="row" id="servizi">
-                @foreach ($services as $service)
-                    <label for="{{$service->service_name}}">{{$service->service_name}}</label>
-                    <input type="checkbox" id="{{$service->service_name}}" name="servizi" value="{{$service->service_name}}">
-                @endforeach
+                <div class="col-sm-12 d-flex justify-content-center">
+                    @foreach ($services as $service)
+                        <div class="form-group mr-5">
+                            <label for="{{$service->service_name}}">{{$service->service_name}}</label>
+                            <input type="checkbox" id="{{$service->service_name}}" name="servizi" value="{{$service->service_name}}">
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
         <div class="section">
@@ -63,7 +67,7 @@
             $('#servizi input').each(function(){
                 if($(this).prop("checked")) {
                     var thisValue = $(this).val();
-                    var new_item = 'service=' + thisValue;
+                    var new_item = 'service[]=' + thisValue;
                     array.push(new_item);
                 }
             });
