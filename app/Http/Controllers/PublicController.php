@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Coordinate;
 use App\Apartment;
 use App\Visit;
+use App\Service;
 use App\Message;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -51,7 +52,7 @@ class PublicController extends Controller
     public function search(Request $request){
 
         if ($request->ajax()) {
-            return response()->json($request->service);
+            return response()->json($request->all());
         };
         $dati = $request->all();
 
@@ -70,9 +71,15 @@ class PublicController extends Controller
                 array_push($filtered_results, $new);
             }
         }
+        $services = Service::all();
         $adesso = Carbon::now();
         $un_mese_fa = $adesso->copy()->subDays('31');
-        return view('risultati', [ 'apartments' => $filtered_results, 'now' => $adesso, 'mese_fa'=>$un_mese_fa ]);
+        return view('risultati', [
+            'apartments' => $filtered_results,
+            'services' => $services,
+            'now' => $adesso,
+            'mese_fa'=>$un_mese_fa
+        ]);
 
     }
     public function storeMessage(Request $request, Apartment $apartment){

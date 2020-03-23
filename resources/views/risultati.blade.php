@@ -4,12 +4,11 @@
     <main>
         <div class="container">
             <div class="row" id="servizi">
-                <label for="wifi">WiFI</label>
-                <input type="checkbox" id="wifi" name="servizi" value="WiFi">
-                <label for="piscina">Piscina</label>
-                <input type="checkbox" id="piscina" name="servizi" value="Piscina">
+                @foreach ($services as $service)
+                    <label for="{{$service->service_name}}">{{$service->service_name}}</label>
+                    <input type="checkbox" id="{{$service->service_name}}" name="servizi" value="{{$service->service_name}}">
+                @endforeach
             </div>
-
         </div>
         <div class="section">
             <div class="row">
@@ -64,19 +63,19 @@
             $('#servizi input').each(function(){
                 if($(this).prop("checked")) {
                     var thisValue = $(this).val();
-                    array.push(thisValue);
+                    var new_item = 'service=' + thisValue;
+                    array.push(new_item);
                 }
             });
-            var new_querie = array.join(',');
-            var last = 'service=' + new_querie
-            console.log(last);
+            var new_querie = array.join('&');
+            console.log(new_querie);
             $.ajax ({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 method: 'POST',
                 url : '{{route('cerca')}}',
-                data: last,
+                data: new_querie,
                 success: function(response) {
                     console.log(response)
                 },
