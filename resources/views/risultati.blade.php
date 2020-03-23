@@ -2,6 +2,15 @@
 
 @section('content')
     <main>
+        <div class="container">
+            <div class="row" id="servizi">
+                <label for="wifi">WiFI</label>
+                <input type="checkbox" id="wifi" name="servizi" value="WiFi">
+                <label for="piscina">Piscina</label>
+                <input type="checkbox" id="piscina" name="servizi" value="Piscina">
+            </div>
+
+        </div>
         <div class="section">
             <div class="row">
 
@@ -46,6 +55,38 @@
         </div>
 
     </main>
+
+    <script type="text/javascript">
+
+    $(document).ready(function(){
+        $('input[type=checkbox]').on("click", function() {
+            var array = [];
+            $('#servizi input').each(function(){
+                if($(this).prop("checked")) {
+                    var thisValue = $(this).val();
+                    array.push(thisValue);
+                }
+            });
+            var new_querie = array.join(',');
+            var last = 'service=' + new_querie
+            console.log(last);
+            $.ajax ({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                method: 'POST',
+                url : '{{route('cerca')}}',
+                data: last,
+                success: function(response) {
+                    console.log(response)
+                },
+                error: function(response) {
+                    console.log(response)
+                }
+            })
+        })
+    });
+    </script>
 
 
 @endsection
