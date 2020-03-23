@@ -51,12 +51,12 @@ class PublicController extends Controller
     }
     public function search(Request $request){
 
-        if ($request->ajax()) {
-            $services = $request->service;
-            return response()->json($services);
-        };
+        // if ($request->ajax()) {
+        //     $services = $request->service;
+        //     return response()->json($request->all());
+        // };
         $dati = $request->all();
-
+        dd($dati);
         $lat1 = $dati['lat'];
         $lon1 = $dati['lon'];
 

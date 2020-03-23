@@ -16,7 +16,9 @@
         </div>
         <div class="section">
             <div class="row">
-
+                @if ($request && $request->ajax())
+                    {{dd($request)}}
+                @endif
                 @foreach ($apartments as $apartment)
                     @if ($apartment != null)
 
