@@ -51,12 +51,45 @@ class PublicController extends Controller
     }
     public function search(Request $request){
 
-        // if ($request->ajax()) {
-        //     $services = $request->service;
-        //     return response()->json($request->all());
-        // };
+        if ($request->ajax()) {
+            $services = $request->service;
+            $lat1 = $request->lat;
+            $lon1 = $request->lon;
+            $range = $request->range;
+            if($services === null) {
+                $query = DB::table('apartments')
+                    ->join('coordinates', 'apartments.coordinates_id', '=', 'coordinates.id')
+                    ->select('*')
+                    ->orderBy('apartments.created_at', 'desc')
+                    ->get();
+            } else {
+                $number_elements_array = count($services);
+                $query = DB::table('apartment_service')
+                ->join('apartments', 'apartment_service.apartment_id', '=', 'apartments.id')
+                ->join('coordinates', 'apartments.coordinates_id', '=', 'coordinates.id')
+                ->select('apartments.id', 'apartments.cover_image', 'apartments.title', 'apartments.city', 'coordinates.lat', 'coordinates.lon',
+                DB::raw("COUNT(*) as matchedItems"))
+                ->whereIn('service_id', $services)
+                ->groupBy('apartment_id')
+                ->having('matchedItems', '=', $number_elements_array)
+                ->orderBy('apartments.created_at', 'desc')
+                ->get();
+            }
+              $last_filtered = [];
+              foreach ($query as $key) {
+                  $lat2 = $key->lat;
+                  $lon2 = $key->lon;
+                  $distance = (6371*3.1415926*sqrt(($lat2-$lat1)*($lat2-$lat1) + cos($lat2/57.29578)*cos($lat1/57.29578)*($lon2-$lon1)*($lon2-$lon1))/180);
+                  if ($distance <= $range) {
+                      array_push($last_filtered, $key);
+                  }
+                }
+            return response()->json($last_filtered);
+        };
+
         $dati = $request->all();
-        dd($dati);
+
+        // lat e lon della ricerca fatta in search
         $lat1 = $dati['lat'];
         $lon1 = $dati['lon'];
 
@@ -79,7 +112,9 @@ class PublicController extends Controller
             'apartments' => $filtered_results,
             'services' => $services,
             'now' => $adesso,
-            'mese_fa'=>$un_mese_fa
+            'mese_fa'=>$un_mese_fa,
+            'lat'=> $lat1,
+            'lon'=> $lon1
         ]);
 
     }

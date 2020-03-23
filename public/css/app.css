@@ -10900,6 +10900,10 @@ body {
   height: 200px;
 }
 
+.row {
+  width: 100%;
+}
+
 .barra_ricerca_tomtom {
   position: relative;
   bottom: 5px;
