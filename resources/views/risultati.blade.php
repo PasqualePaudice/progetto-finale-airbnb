@@ -72,7 +72,7 @@
     </main>
     <script id="template" type="text/x-handlebars-template">
         <div class=" col-xl-3 col-lg-4 col-md-6 mb-4" >
-            <a id="a" href="{{ url('localhost:8000/dettagli/')}}/@{{id}}"></a>
+            <a id="a" href="{{ url('dettagli/')}}/@{{id}}"></a>
             <div class="bg-white rounded shadow-sm" >
                 <img src="{{ asset('storage/')}}/@{{ cover_image }}" alt="" class="img-fluid card-img-top team-4" >
                 <div class="p-4">
