@@ -44,9 +44,7 @@
                                             @endphp
 
                                             @if ($apartment->created_at > $mese_fa)
-                                                <div class=" badge badge-danger px-3 rounded-pill font-weight-normal">
-                                                    New
-                                                </div>
+                                                <div class=" badge badge-danger px-3 rounded-pill font-weight-normal">New</div>
                                             @endif
                                             @if (count($apartment_sponsors))
                                                 <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">Sponsorizzato</span></p>
@@ -79,6 +77,7 @@
                     <h5> @{{ title }} </h5>
                     <p class="small text-muted mb-0">@{{ city }}</p>
                     <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                        @{{{ now }}}
                         @{{{ end }}}
                     </div>
                 </div>
@@ -102,6 +101,8 @@
         $('select').change(function(){
             var now = moment().subtract(1, 'hour').format('YYYY-MM-DD h:mm:ss');
             console.log(now);
+            var one_month = moment().subtract(1, 'month').format('YYYY-MM-DD h:mm:ss');
+            console.log(one_month);
             var range = $(this).val();
             var array = [];
             $('#servizi input').each(function(){
@@ -125,6 +126,11 @@
                     console.log(response);
                     $('#filtered').empty();
                     for (var i = 0; i < response.length; i++) {
+                        if (response[i].created_at > one_month) {
+                            var new_tag = '<div class=" badge badge-danger px-3 rounded-pill font-weight-normal">New</div>'
+                        } else {
+                            var new_tag = ''
+                        };
                         if (now < response[i].end_sponsor) {
                             var tag = '<p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">Sponsorizzato</span></p>'
                         } else {
@@ -135,7 +141,8 @@
                             'cover_image' : response[i].cover_image,
                             'title' : response[i].title,
                             'city' : response[i].city,
-                            'end': tag
+                            'end': tag,
+                            'now': new_tag
                         };
 
                         var final = template_function(properties);
@@ -152,6 +159,8 @@
         $('input[type=checkbox]').on("click", function() {
             var now = moment().subtract(1, 'hour').format('YYYY-MM-DD h:mm:ss');
             console.log(now);
+            var one_month = moment().subtract(1, 'month').format('YYYY-MM-DD h:mm:ss');
+            console.log(one_month);
             var array = [];
             $('#servizi input').each(function(){
                 if($(this).prop("checked")) {
@@ -176,6 +185,11 @@
                     console.log(response);
                     $('#filtered').empty();
                     for (var i = 0; i < response.length; i++) {
+                        if (response[i].created_at > one_month) {
+                            var new_tag = '<div class=" badge badge-danger px-3 rounded-pill font-weight-normal">New</div>'
+                        } else {
+                            var new_tag = ''
+                        };
                         if (now < response[i].end_sponsor) {
                             var tag = '<p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">Sponsorizzato</span></p>'
                         } else {
@@ -186,7 +200,8 @@
                             'cover_image' : response[i].cover_image,
                             'title' : response[i].title,
                             'city' : response[i].city,
-                            'end': tag
+                            'end': tag,
+                            'now': new_tag
                         };
                         var final = template_function(properties);
                         $('#filtered').append(final);

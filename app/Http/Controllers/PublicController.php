@@ -56,7 +56,6 @@ class PublicController extends Controller
             $lat1 = $request->lat;
             $lon1 = $request->lon;
             $range = $request->range;
-            $number_elements_array = count($services);
 
             if($services === null) {
                 $query = DB::table('apartments')
@@ -67,11 +66,12 @@ class PublicController extends Controller
                     ->orderBy('apartments.created_at', 'desc')
                     ->get();
             } else {
+                $number_elements_array = count($services);
                 $query = DB::table('apartment_service')
                 ->join('apartments', 'apartment_service.apartment_id', '=', 'apartments.id')
                 ->leftJoin('apartment_sponsor', 'apartment_sponsor.apartment_id', '=', 'apartments.id')
                 ->join('coordinates', 'apartments.coordinates_id', '=', 'coordinates.id')
-                ->select('apartments.id', 'apartments.visible', 'apartment_sponsor.end_sponsor', 'apartments.cover_image', 'apartments.title', 'apartments.city', 'coordinates.lat', 'coordinates.lon',
+                ->select('apartments.id', 'apartments.visible', 'apartments.created_at', 'apartment_sponsor.end_sponsor', 'apartments.cover_image', 'apartments.title', 'apartments.city', 'coordinates.lat', 'coordinates.lon',
                 DB::raw("COUNT(*) as matchedItems"))
                 ->whereIn('service_id', $services)
                 ->where('apartments.visible', 1)
