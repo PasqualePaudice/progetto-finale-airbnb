@@ -4,6 +4,18 @@
 
 
   <div class="container">
+      @if (session('message'))
+          <div class="row text-center">
+              <div class="col-sm-12">
+                  <div class="alert alert-success">
+                      {{ session('message') }}
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+              </div>
+          </div>
+      @endif
     <div class="row">
       <div class="col-sm-6">
         <h1>Lista appartamenti</h1>
@@ -35,6 +47,9 @@
 
                   <a class="btn btn-info" href="{{route('admin.apartments.show',['apartment' => $apartment->id])}}">Visualizza</a>
                   <a class="btn btn-warning" href="{{route('admin.apartments.edit',['apartment' => $apartment->id])}}">Modifica</a>
+                  <a class="btn btn-secondary" href="{{route('admin.visibility',['apartment' => $apartment->id])}}">
+                      {{($apartment->visible == 1) ? 'Disattiva' : 'Attiva' }}
+                  </a>
                   <form class="d-inline-block" action=" {{route('admin.apartments.destroy',['apartment' => $apartment->id])}}" method="post">
                     @csrf
                     @method('DELETE')

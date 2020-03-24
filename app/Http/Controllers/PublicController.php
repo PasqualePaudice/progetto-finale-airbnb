@@ -60,6 +60,7 @@ class PublicController extends Controller
                 $query = DB::table('apartments')
                     ->join('coordinates', 'apartments.coordinates_id', '=', 'coordinates.id')
                     ->select('*')
+                    ->where('apartments.visible', 1)
                     ->orderBy('apartments.created_at', 'desc')
                     ->get();
             } else {
@@ -67,9 +68,10 @@ class PublicController extends Controller
                 $query = DB::table('apartment_service')
                 ->join('apartments', 'apartment_service.apartment_id', '=', 'apartments.id')
                 ->join('coordinates', 'apartments.coordinates_id', '=', 'coordinates.id')
-                ->select('apartments.id', 'apartments.cover_image', 'apartments.title', 'apartments.city', 'coordinates.lat', 'coordinates.lon',
+                ->select('apartments.id', 'apartments.visible', 'apartments.cover_image', 'apartments.title', 'apartments.city', 'coordinates.lat', 'coordinates.lon',
                 DB::raw("COUNT(*) as matchedItems"))
                 ->whereIn('service_id', $services)
+                ->where('apartments.visible', 1)
                 ->groupBy('apartment_id')
                 ->having('matchedItems', '=', $number_elements_array)
                 ->orderBy('apartments.created_at', 'desc')

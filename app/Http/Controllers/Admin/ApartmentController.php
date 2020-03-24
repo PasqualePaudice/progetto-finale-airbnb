@@ -367,5 +367,16 @@ class ApartmentController extends Controller
         return redirect()->route('admin.apartments.messages', [ 'apartment' => $apartment]);
     }
 
+    public function change_visibility(Apartment $apartment) {
+        if ($apartment->visible == 0) {
+            $apartment->visible = 1;
+            $apartment->update();
+            return redirect ('admin/apartments')->with('message', 'L\'appartamento è visibile!');
+        } else {
+            $apartment->visible = 0;
+            $apartment->update();
+            return redirect ('admin/apartments')->with('message', 'L\'appartamento è stato disattivato!');
+        }
+    }
 
 }

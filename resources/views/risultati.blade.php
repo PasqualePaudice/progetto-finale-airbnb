@@ -27,7 +27,7 @@
         <div class="section">
             <div class="row" id="filtered">
                 @foreach ($apartments as $apartment)
-                    @if ($apartment != null)
+                    @if ($apartment != null && $apartment->visible == 1)
 
 
                     <div class=" col-xl-3 col-lg-4 col-md-6 mb-4" >
