@@ -30,6 +30,7 @@
       crossorigin="anonymous"
     />
     <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

@@ -79,18 +79,7 @@
                     <h5> @{{ title }} </h5>
                     <p class="small text-muted mb-0">@{{ city }}</p>
                     <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-                        @php
-                            $apartment_sponsors = DB::table('apartment_sponsor')->where('apartment_id', $apartment->id)->where('end_sponsor', '>=' , $now )->get()
-                        @endphp
-
-                        @if ($apartment->created_at > $mese_fa)
-                            <div class=" badge badge-danger px-3 rounded-pill font-weight-normal">
-                                New
-                            </div>
-                        @endif
-                        @if (count($apartment_sponsors))
-                            <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">Sponsorizzato</span></p>
-                        @endif
+                        @{{{ end }}}
                     </div>
                 </div>
             </div>
@@ -101,6 +90,7 @@
 
 
     $(document).ready(function(){
+
         var template_html = $("#template").html();
         var template_function = Handlebars.compile(template_html);
 
@@ -110,6 +100,8 @@
         var query_lat_lon = '&lat=' + lat + '&lon=' + lon;
 
         $('select').change(function(){
+            var now = moment().subtract(1, 'hour').format('YYYY-MM-DD h:mm:ss');
+            console.log(now);
             var range = $(this).val();
             var array = [];
             $('#servizi input').each(function(){
@@ -130,14 +122,22 @@
                 url : '{{route('cerca')}}',
                 data: last_query,
                 success: function(response) {
+                    console.log(response);
                     $('#filtered').empty();
                     for (var i = 0; i < response.length; i++) {
+                        if (now < response[i].end_sponsor) {
+                            var tag = '<p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">Sponsorizzato</span></p>'
+                        } else {
+                            var tag = ''
+                        };
                         var properties = {
                             'id' : response[i].id,
                             'cover_image' : response[i].cover_image,
                             'title' : response[i].title,
                             'city' : response[i].city,
+                            'end': tag
                         };
+
                         var final = template_function(properties);
                         $('#filtered').append(final);
                     }
@@ -150,6 +150,8 @@
 
 
         $('input[type=checkbox]').on("click", function() {
+            var now = moment().subtract(1, 'hour').format('YYYY-MM-DD h:mm:ss');
+            console.log(now);
             var array = [];
             $('#servizi input').each(function(){
                 if($(this).prop("checked")) {
@@ -171,13 +173,20 @@
                 url : '{{route('cerca')}}',
                 data: last_query,
                 success: function(response) {
+                    console.log(response);
                     $('#filtered').empty();
                     for (var i = 0; i < response.length; i++) {
+                        if (now < response[i].end_sponsor) {
+                            var tag = '<p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">Sponsorizzato</span></p>'
+                        } else {
+                            var tag = ''
+                        };
                         var properties = {
                             'id' : response[i].id,
                             'cover_image' : response[i].cover_image,
                             'title' : response[i].title,
                             'city' : response[i].city,
+                            'end': tag
                         };
                         var final = template_function(properties);
                         $('#filtered').append(final);
