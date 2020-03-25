@@ -11343,6 +11343,35 @@ nav#prova ul li a:hover {
   margin-bottom: 10px;
 }
 
+.team4minJumbo {
+  height: 400px;
+  background: url("https://www.startpreventivi.it/wp-content/themes/Avada-Child-Theme/images/Blog/Case-Appartamenti/Appartamento-scandinavo/1-appartamento-scandinavo.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  border-radius: 15px;
+}
+
+.team4minJumbo .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+}
+
+.team4minJumbo div {
+  color: white;
+  z-index: 2;
+}
+
+#minJumbo {
+  border-radius: 15px;
+}
+
 body {
   background: white;
 }
