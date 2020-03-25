@@ -86,11 +86,11 @@
 
         <cardteam data-image="https://media.timeout.com/images/105186767/image.jpg">
             <a slot="link" class="vue_card_link" href="{{ route('cerca') }}" onclick="event.preventDefault();
-                          document.getElementById('logout-form-roma').submit();">></a>
-            <form id="logout-form-roma" slot="posting" action="{{ route('cerca') }}" method="post" style="display: none;">
+                          document.getElementById('logout-form-milano').submit();">></a>
+            <form id="logout-form-milano" slot="posting" action="{{ route('cerca') }}" method="post" style="display: none;">
                 @csrf
-                <input slot="lat" type="text" name="lat" value="41.89806" hidden>
-                <input slot="lon" type="text" name="lon" value="12.50911" hidden>
+                <input slot="lat" type="text" name="lat" value="45.46369" hidden>
+                <input slot="lon" type="text" name="lon" value="9.19049" hidden>
             </form>
             <h1 slot="header">Milano</h1>
             <p slot="content">I migliori appartamenti a Milano</p>
@@ -98,11 +98,11 @@
 
         <cardteam data-image="https://www.mowgli.it/wp-content/uploads/2018/01/napoli-2.jpg">
             <a slot="link" class="vue_card_link" href="{{ route('cerca') }}" onclick="event.preventDefault();
-                          document.getElementById('logout-form-roma').submit();">></a>
-            <form id="logout-form-roma" slot="posting" action="{{ route('cerca') }}" method="post" style="display: none;">
+                          document.getElementById('logout-form-napoli').submit();">></a>
+            <form id="logout-form-napoli" slot="posting" action="{{ route('cerca') }}" method="post" style="display: none;">
                 @csrf
-                <input slot="lat" type="text" name="lat" value="41.89806" hidden>
-                <input slot="lon" type="text" name="lon" value="12.50911" hidden>
+                <input slot="lat" type="text" name="lat" value="40.83546" hidden>
+                <input slot="lon" type="text" name="lon" value="14.24827" hidden>
             </form>
             <h1 slot="header">Napoli</h1>
             <p slot="content">I migliori appartamenti a Napoli</p>
@@ -110,11 +110,11 @@
 
         <cardteam data-image="https://italianstudies.com.au/wp-content/uploads/2017/03/ccfirenze3.jpg">
             <a slot="link" class="vue_card_link" href="{{ route('cerca') }}" onclick="event.preventDefault();
-                          document.getElementById('logout-form-roma').submit();">></a>
-            <form id="logout-form-roma" slot="posting" action="{{ route('cerca') }}" method="post" style="display: none;">
+                          document.getElementById('logout-form-firenze').submit();">></a>
+            <form id="logout-form-firenze" slot="posting" action="{{ route('cerca') }}" method="post" style="display: none;">
                 @csrf
-                <input slot="lat" type="text" name="lat" value="41.89806" hidden>
-                <input slot="lon" type="text" name="lon" value="12.50911" hidden>
+                <input slot="lat" type="text" name="lat" value="43.77319" hidden>
+                <input slot="lon" type="text" name="lon" value="11.24964" hidden>
             </form>
             <h1 slot="header">Firenze</h1>
             <p slot="content">I migliori appartamenti a Firenze</p>
