@@ -9,6 +9,7 @@ Vue.component('cardteam', {
             ref="cardteam">
             <div class="cardteam"
                 :style="cardStyle">
+                <slot name="premium"></slot>
                 <slot name="link"></slot>
                 <slot name="posting">
                 </slot>

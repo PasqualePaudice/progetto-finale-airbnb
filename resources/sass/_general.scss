@@ -40,3 +40,19 @@ a.vue_card_link{
     }
 
 }
+
+.premium{
+    position: absolute;
+    right:5px;
+    top:5px;
+    width:30px;
+    fill: #ffd740;
+}
+
+.premium-shadow{
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(255,215,64,1);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(255,215,64,1);
+    box-shadow: 0px 0px 15px 0px rgba(255,215,64,1);
+
+
+}
