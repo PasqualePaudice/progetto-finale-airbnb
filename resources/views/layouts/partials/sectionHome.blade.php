@@ -68,6 +68,24 @@
         <button id="search_btn" type="submit" hidden></button>
     </form>
 
+    <div id="testingVue" class="container">
+        <cardteam data-image="https://cdn4.gestim.biz/custom/01505/foto/20180323165445-1.jpg">
+            <h1 slot="header">Roma</h1>
+            <p slot="content">Appartmento Roma - zona Montecitorio</p>
+        </cardteam>
+        <cardteam data-image="https://www.immobilisantandrea.it/media2/news/appartamenti-lusso-milano-soggiorno-santandrea.jpg">
+            <h1 slot="header">Milano</h1>
+            <p slot="content">Appartmento Milano - zona Duomo</p>
+        </cardteam>
+        <cardteam data-image="https://www.ansa.it/crop/crop.php?file=http://www.ansa.it/webimages/cl_1100x/2018/4/11/8abf14ad7037d8c44d0cd6a96492c5f7.jpg&w=1100&h=600&face=Detection&c=AQoFdonaVWE9I7TGOh5Jsw">
+            <h1 slot="header">Bologna</h1>
+            <p slot="content">Appartmento Bologna - zona Torre Asinelli</p>
+        </cardteam>
+        <cardteam data-image="https://cdn.opisas.com/newopisas/2015-06-10_72713_3OJ5fwunIBMcTZQLBe1mamaajN0atdnGruM3z2nW7XU.crop-box-16-9.jpg">
+            <h1 slot="header">Jesi</h1>
+            <p slot="content">Appartmento Jesi - zona Centro</p>
+        </cardteam>
+    </div>
 
     <script>
 
@@ -105,6 +123,8 @@
         });
     </script>
 
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="{{ asset('js/vue-card.js') }}" defer></script>
 
             {{-- <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
                 <div class="bg-white rounded shadow-sm"><img src="https://cdn.pixabay.com/photo/2019/03/31/14/31/italy-4093227__340.jpg" alt="" class="img-fluid card-img-top">
