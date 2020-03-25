@@ -213,6 +213,33 @@ class ApartmentController extends Controller
              $dati['cover_image'] = $cover_image_path;
          }
 
+         $via = $request->indirizzo;
+         $citta = $request->city;
+         $stato = $request->state;
+         $cap = $request->cap;
+
+         $indirizzo = $via . ' ' . $citta .' '.  $cap;
+
+         $client = new Client();
+
+     	$response = $client->request('GET', 'https://api.tomtom.com/search/2/geocode/' . $indirizzo . '.json?countrySet='. $stato. '&key=YPixAIIG2SgrHPBm2WGBWUa9L4JiGcFe');
+
+     	$statusCode = $response->getStatusCode();
+
+     	$body = $response->getBody()->getContents();
+
+         $body = json_decode($body);
+
+         $prova = $body->results[0];
+
+
+         $lat = $prova->position->lat;
+         $lon = $prova->position->lon;
+
+         $old_coordinate = Coordinate::where('id', $apartment->coordinates_id)->first();
+         $old_coordinate->lat = $lat;
+         $old_coordinate->lon = $lon;
+         $old_coordinate->update();
         $apartment->update($dati);
 
         if (!empty($dati['service_id'])) {
