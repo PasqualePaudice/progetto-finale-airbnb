@@ -10926,6 +10926,10 @@ a.vue_card_link {
   fill: #B0C6F5;
 }
 
+.barra_ricerca_tomtom svg.black2 {
+  fill: black;
+}
+
 header {
   width: 100%;
   background-color: #b0c6f5;
