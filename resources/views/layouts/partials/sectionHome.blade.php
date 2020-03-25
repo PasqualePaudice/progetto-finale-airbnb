@@ -1,15 +1,42 @@
 <div class="content">
-    <div class="col-lg-6">
-        <div class="card effect-1">
-            <div class="card-body p-5">
-                <h2 class="h5">TROVA L'APPARTAMENTO NEL TUO STILE</h2>
-                <p class="">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa facere, nam, labore, deleniti cupiditate ex expedita fugiat modi voluptas quam vero!</p>
+    <div class="col-sm-12">
+        <div class="card mt-5" id="minJumbo">
+            <div class="card-body p-5 d-flex justify-content-center align-center team4minJumbo">
+                <div class="overlay">
+                </div>
+                <div class="d-flex flex-column justify-content-center text-center">
+                    <h2>TROVA L'APPARTAMENTO NEL TUO STILE</h2>
+                    <h4>I nostri appartamenti Premium</h4>
+                </div>
             </div>
         </div>
-        <div class='barra_ricerca_tomtom'></div>
     </div>
 
-
+    <div class="section">
+        <div class="row">
+            @foreach ($sponsoreds as $sponsored)
+                <div class="col-xl-3 col-lg-4 col-md-6 mb-4" >
+                    <a class="vue_card_link" href="{{route('dettagli',['apartment'=>$sponsored->id])}}"></a>
+                    <div class="bg-white rounded shadow-sm h-100 position-relative" >
+                        <img src="{{asset('storage/'.$sponsored->cover_image)}}" alt="" class="img-fluid card-img-top team-4">
+                        <div class="p-4">
+                            <h5> {{$sponsored->title}}</h5>
+                            <p class="small text-muted mb-0">{{$sponsored->city}}
+                            @if ($sponsored->created_at > $mese_fa)
+                                <span class=" badge badge-danger px-3 rounded-pill font-weight-normal">
+                                    New
+                                </span>
+                            @endif
+                            </p>
+                        </div>
+                        <span>
+                            {{-- da aggiungere etichetta premium--}}
+                        </span>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
 
 
 
@@ -28,13 +55,13 @@
                         <div class="   col-xl-3 col-lg-4 col-md-6 mb-4" >
 
 
-                                <a id="a" href="{{route('dettagli',['apartment'=>$apartment->id])}}">   </a>
-                                    <div class="bg-white rounded shadow-sm" >
+                                <a class="vue_card_link" href="{{route('dettagli',['apartment'=>$apartment->id])}}">   </a>
+                                    <div class="bg-white rounded shadow-sm h-100" >
                                         <img src="{{asset('storage/'.$apartment->cover_image)}}" alt="" class="img-fluid card-img-top team-4" >
                                         <div class="p-4">
                                             <h5> {{$apartment->title}}</h5>
                                             <p class="small text-muted mb-0">{{$apartment->city}}</p>
-                                            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                                            {{-- <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
                                                 @php
                                                     $apartment_sponsors = DB::table('apartment_sponsor')->where('apartment_id', $apartment->id)->where('end_sponsor', '>=' , $now )->get()
                                                 @endphp
@@ -48,7 +75,7 @@
                                                     <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">Sponsorizzato</span></p>
                                                 @endif
 
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
 
@@ -60,6 +87,7 @@
             </div>
         </div>
     </div>
+
     <form class="" action="{{ route('cerca') }}" method="post">
         @csrf
         <input id="search_lat" type="text" name="lat" value="" hidden>
@@ -67,6 +95,61 @@
         <input id="search_name" type="text" name="name" value="" hidden>
         <button id="search_btn" type="submit" hidden></button>
     </form>
+
+    <div id="testingVue" class="containerteam4">
+
+        <cardteam data-image="https://admin.pettinaviaggi.it/images/viaggi/345801e3-2b28-4dfe-a28d-3fd4ba539765_roma.jpg">
+            <a slot="link" class="vue_card_link" href="{{ route('cerca') }}" onclick="event.preventDefault();
+            document.getElementById('logout-form-roma').submit();"></a>
+            <form id="logout-form-roma" slot="posting" action="{{ route('cerca') }}" method="post" style="display: none;">
+                @csrf
+                <input slot="lat" type="text" name="lat" value="41.89806" hidden>
+                <input slot="lon" type="text" name="lon" value="12.50911" hidden>
+            </form>
+            <h1 slot="header">Roma</h1>
+            <p slot="content">I migliori appartamenti a Roma</p>
+        </cardteam>
+
+
+        <cardteam data-image="https://media.timeout.com/images/105186767/image.jpg">
+            <a slot="link" class="vue_card_link" href="{{ route('cerca') }}" onclick="event.preventDefault();
+            document.getElementById('logout-form-milano').submit();"></a>
+            <form id="logout-form-milano" slot="posting" action="{{ route('cerca') }}" method="post" style="display: none;">
+                @csrf
+                <input slot="lat" type="text" name="lat" value="45.46369" hidden>
+                <input slot="lon" type="text" name="lon" value="9.19049" hidden>
+            </form>
+            <h1 slot="header">Milano</h1>
+            <p slot="content">I migliori appartamenti a Milano</p>
+        </cardteam>
+
+        <cardteam data-image="https://www.mowgli.it/wp-content/uploads/2018/01/napoli-2.jpg">
+            <a slot="link" class="vue_card_link" href="{{ route('cerca') }}" onclick="event.preventDefault();
+            document.getElementById('logout-form-napoli').submit();"></a>
+            <form id="logout-form-napoli" slot="posting" action="{{ route('cerca') }}" method="post" style="display: none;">
+                @csrf
+                <input slot="lat" type="text" name="lat" value="40.83546" hidden>
+                <input slot="lon" type="text" name="lon" value="14.24827" hidden>
+            </form>
+            <h1 slot="header">Napoli</h1>
+            <p slot="content">I migliori appartamenti a Napoli</p>
+        </cardteam>
+
+        <cardteam data-image="https://italianstudies.com.au/wp-content/uploads/2017/03/ccfirenze3.jpg">
+            <a slot="link" class="vue_card_link" href="{{ route('cerca') }}" onclick="event.preventDefault();
+            document.getElementById('logout-form-firenze').submit();"></a>
+            <form id="logout-form-firenze" slot="posting" action="{{ route('cerca') }}" method="post" style="display: none;">
+                @csrf
+                <input slot="lat" type="text" name="lat" value="43.77319" hidden>
+                <input slot="lon" type="text" name="lon" value="11.24964" hidden>
+            </form>
+            <h1 slot="header">Firenze</h1>
+            <p slot="content">I migliori appartamenti a Firenze</p>
+        </cardteam>
+
+    </div>
+
+
 
 
     <script>
@@ -105,111 +188,10 @@
         });
     </script>
 
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="{{ asset('js/vue-card.js') }}" defer></script>
 
-            {{-- <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                <div class="bg-white rounded shadow-sm"><img src="https://cdn.pixabay.com/photo/2019/03/31/14/31/italy-4093227__340.jpg" alt="" class="img-fluid card-img-top">
-                <div class="p-4">
-                    <h5> <a href="#" class="text-dark">TITOLO</a></h5>
-                    <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                    <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-                    <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">TESTO</span></p>
-                    <div class="badge badge-danger px-3 rounded-pill font-weight-normal">New</div>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                <div class="bg-white rounded shadow-sm"><img src="https://cdn.pixabay.com/photo/2019/03/31/14/31/italy-4093227__340.jpg" alt="" class="img-fluid card-img-top">
-                <div class="p-4">
-                    <h5> <a href="#" class="text-dark">TITOLO</a></h5>
-                    <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                    <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-                    <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">TESTO</span></p>
-                    <div class="badge badge-danger px-3 rounded-pill font-weight-normal">New</div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                <div class="bg-white rounded shadow-sm"><img src="https://cdn.pixabay.com/photo/2019/03/31/14/31/italy-4093227__340.jpg" alt="" class="img-fluid card-img-top">
-                <div class="p-4">
-                    <h5> <a href="#" class="text-dark">TITOLO</a></h5>
-                    <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                    <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-                    <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">TESTO</span></p>
-                    <div class="badge badge-danger px-3 rounded-pill font-weight-normal">New</div>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </div>
-</div>
-<hr>
-<div class="content">
-    <div class="col-lg-6">
-        <div class="card effect-1">
-            <div class="card-body p-5">
-                <h2 class="h5">TROVA LE VACANZE NEL TUO STILE</h2>
-                <p class="">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa facere, nam, labore, deleniti cupiditate ex expedita fugiat modi voluptas quam vero!</p>
-            </div>
-        </div>
-    </div>
-        <div class="section">
-            <div class="row">
-            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                <div class="bg-white rounded shadow-sm"><img src="https://cdn.pixabay.com/photo/2019/03/31/14/31/italy-4093227__340.jpg" alt="" class="img-fluid card-img-top">
-                <div class="p-4">
-                    <h5> <a href="#" class="text-dark">TITOLO</a></h5>
-                    <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                    <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-                    <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">TESTO</span></p>
-                    <div class="badge badge-danger px-3 rounded-pill font-weight-normal">New</div>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                <div class="bg-white rounded shadow-sm"><img src="https://cdn.pixabay.com/photo/2019/03/31/14/31/italy-4093227__340.jpg" alt="" class="img-fluid card-img-top">
-                <div class="p-4">
-                    <h5> <a href="#" class="text-dark">TITOLO</a></h5>
-                    <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                    <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-                    <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">TESTO</span></p>
-                    <div class="badge badge-danger px-3 rounded-pill font-weight-normal">New</div>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                <div class="bg-white rounded shadow-sm"><img src="https://cdn.pixabay.com/photo/2019/03/31/14/31/italy-4093227__340.jpg" alt="" class="img-fluid card-img-top">
-                <div class="p-4">
-                    <h5> <a href="#" class="text-dark">TITOLO</a></h5>
-                    <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                    <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-                    <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">TESTO</span></p>
-                    <div class="badge badge-danger px-3 rounded-pill font-weight-normal">New</div>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                <div class="bg-white rounded shadow-sm"><img src="https://cdn.pixabay.com/photo/2019/03/31/14/31/italy-4093227__340.jpg" alt="" class="img-fluid card-img-top">
-                <div class="p-4">
-                    <h5><a href="#" class="text-dark">TITOLO</a></h5>
-                    <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                    <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-                    <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">TESTO</span></p>
-                    <div class="badge badge-danger px-3 rounded-pill font-weight-normal">New</div>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </div>
-</div>
+{{--
 <hr>
 <div class="section">
     <div class="col-lg-12">
@@ -245,7 +227,4 @@
       <button type="button" class="animated jackInTheBox delay-2s"><a href="{{ route('register') }}">Pubblica il tuo annuncio</a></button>
     </div>
   </div>
-  <div class="page-scroll">
-
-
- --}}
+  <div class="page-scroll"> --}}

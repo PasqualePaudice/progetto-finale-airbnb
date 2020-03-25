@@ -20,19 +20,26 @@
 
         <div class="menu">
           <ul>
-            <li><a href="#">Italiano</a></li>
-            <li><a href="#">€ EUR</a></li>
-            <li><a href="#">Offri una Casa</a></li>
-            <li><a href="#">Aiuto</a></li>
+            <li><a href="#">Link Prova</a></li>
             @if (Route::has('login'))
                 {{-- <div class="top-right links"> --}}
                     @auth
-                        <li><a href="{{ url('/admin') }}">Home</a></li>
+                        <li><a href="{{ url('/admin') }}">Vai al tuo profilo</a></li>
+                        {{-- inseriamo qua logout --}}
+                        <li><a href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                            Esci
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form></li>
                     @else
-                    <li><a href="{{ route('login') }}">Login</a></li>
+                    <li><a href="{{ route('login') }}">Accedi</a></li>
 
                         @if (Route::has('register'))
-                        <li><a href="{{ route('register') }}">Register</a></li>
+                        <li><a href="{{ route('register') }}">Registrati</a></li>
                         @endif
                     @endauth
                 {{-- </div> --}}

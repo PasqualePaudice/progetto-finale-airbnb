@@ -37091,8 +37091,10 @@ $(document).ready(function () {
   $(window).on("scroll", function () {
     if ($(window).scrollTop()) {
       $('nav').addClass('black');
+      $('svg').addClass('black2');
     } else {
       $('nav').removeClass('black');
+      $('svg').removeClass('black2');
     }
   });
 });

@@ -5,10 +5,11 @@ body {
   width: 100%;
   font-family: "Montserrat", sans-serif;
 }
-#a{
+a.vue_card_link{
     position: absolute;
     width:100%;
     height:100%;
+    z-index: 1000;
 }
 
 .team-4{
@@ -33,6 +34,9 @@ body {
 
     svg{
         fill:#B0C6F5;
+        &.black2 {
+            fill:black;
+        }
     }
 
 }
