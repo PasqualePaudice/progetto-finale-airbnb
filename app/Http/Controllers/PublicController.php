@@ -40,12 +40,13 @@ class PublicController extends Controller
 
         }
 
-
+    
         return view('welcome',[
             'apartments' => $apartments,
             'sponsoreds' => $sponsoreds,
             'mese_fa' => $un_mese_fa,
-            'now' => $adesso]);
+            'now' => $adesso
+            ]);
     }
 
     public function dettagli(Apartment $apartment, Request $request){

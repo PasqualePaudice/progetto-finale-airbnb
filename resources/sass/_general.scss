@@ -56,3 +56,13 @@ a.vue_card_link{
 
 
 }
+
+#mostra, #nascondi{
+    cursor: pointer;
+    margin-left: 20px;
+    &:hover{
+        text-decoration: underline;
+    }
+
+
+}

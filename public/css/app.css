@@ -10942,6 +10942,17 @@ a.vue_card_link {
   box-shadow: 0px 0px 15px 0px #ffd740;
 }
 
+#mostra,
+#nascondi {
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+#mostra:hover,
+#nascondi:hover {
+  text-decoration: underline;
+}
+
 header {
   width: 100%;
   background-color: #b0c6f5;
@@ -11295,7 +11306,7 @@ nav#prova ul li a:hover {
 .section {
   position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 50px;
 }

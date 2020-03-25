@@ -10,10 +10,11 @@
 .section {
     position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     // min-height: 100vh;
     padding: 50px;
+    
   }
 
   .grid {
