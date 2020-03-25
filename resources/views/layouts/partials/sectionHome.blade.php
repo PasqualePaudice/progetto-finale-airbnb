@@ -17,12 +17,21 @@
             @foreach ($sponsoreds as $sponsored)
                 <div class="col-xl-3 col-lg-4 col-md-6 mb-4" >
                     <a class="vue_card_link" href="{{route('dettagli',['apartment'=>$sponsored->id])}}"></a>
-                    <div class="bg-white rounded shadow-sm h-100" >
+                    <div class="bg-white rounded shadow-sm h-100 position-relative" >
                         <img src="{{asset('storage/'.$sponsored->cover_image)}}" alt="" class="img-fluid card-img-top team-4">
                         <div class="p-4">
                             <h5> {{$sponsored->title}}</h5>
-                            <p class="small text-muted mb-0">{{$sponsored->city}}</p>
+                            <p class="small text-muted mb-0">{{$sponsored->city}}
+                            @if ($sponsored->created_at > $mese_fa)
+                                <span class=" badge badge-danger px-3 rounded-pill font-weight-normal">
+                                    New
+                                </span>
+                            @endif
+                            </p>
                         </div>
+                        <span>
+                            {{-- da aggiungere etichetta premium--}}
+                        </span>
                     </div>
                 </div>
             @endforeach
