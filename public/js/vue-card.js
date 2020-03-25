@@ -9,6 +9,9 @@ Vue.component('cardteam', {
             ref="cardteam">
             <div class="cardteam"
                 :style="cardStyle">
+                <slot name="link"></slot>
+                <slot name="posting">
+                </slot>
                 <div class="card-bg-team-4" :style="[cardBgTransform, cardBgImage]"></div>
                 <div class="card-info-team-4">
                 <slot name="header"></slot>

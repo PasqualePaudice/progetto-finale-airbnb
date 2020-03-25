@@ -28,7 +28,7 @@
                         <div class="   col-xl-3 col-lg-4 col-md-6 mb-4" >
 
 
-                                <a id="a" href="{{route('dettagli',['apartment'=>$apartment->id])}}">   </a>
+                                <a class="vue_card_link" href="{{route('dettagli',['apartment'=>$apartment->id])}}">   </a>
                                     <div class="bg-white rounded shadow-sm" >
                                         <img src="{{asset('storage/'.$apartment->cover_image)}}" alt="" class="img-fluid card-img-top team-4" >
                                         <div class="p-4">
@@ -60,6 +60,7 @@
             </div>
         </div>
     </div>
+
     <form class="" action="{{ route('cerca') }}" method="post">
         @csrf
         <input id="search_lat" type="text" name="lat" value="" hidden>
@@ -69,23 +70,59 @@
     </form>
 
     <div id="testingVue" class="containerteam4">
+
         <cardteam data-image="https://admin.pettinaviaggi.it/images/viaggi/345801e3-2b28-4dfe-a28d-3fd4ba539765_roma.jpg">
+            <a slot="link" class="vue_card_link" href="{{ route('cerca') }}" onclick="event.preventDefault();
+                          document.getElementById('logout-form-roma').submit();">></a>
+            <form id="logout-form-roma" slot="posting" action="{{ route('cerca') }}" method="post" style="display: none;">
+                @csrf
+                <input slot="lat" type="text" name="lat" value="41.89806" hidden>
+                <input slot="lon" type="text" name="lon" value="12.50911" hidden>
+            </form>
             <h1 slot="header">Roma</h1>
             <p slot="content">I migliori appartamenti a Roma</p>
         </cardteam>
+
+
         <cardteam data-image="https://media.timeout.com/images/105186767/image.jpg">
+            <a slot="link" class="vue_card_link" href="{{ route('cerca') }}" onclick="event.preventDefault();
+                          document.getElementById('logout-form-roma').submit();">></a>
+            <form id="logout-form-roma" slot="posting" action="{{ route('cerca') }}" method="post" style="display: none;">
+                @csrf
+                <input slot="lat" type="text" name="lat" value="41.89806" hidden>
+                <input slot="lon" type="text" name="lon" value="12.50911" hidden>
+            </form>
             <h1 slot="header">Milano</h1>
             <p slot="content">I migliori appartamenti a Milano</p>
         </cardteam>
+
         <cardteam data-image="https://www.mowgli.it/wp-content/uploads/2018/01/napoli-2.jpg">
+            <a slot="link" class="vue_card_link" href="{{ route('cerca') }}" onclick="event.preventDefault();
+                          document.getElementById('logout-form-roma').submit();">></a>
+            <form id="logout-form-roma" slot="posting" action="{{ route('cerca') }}" method="post" style="display: none;">
+                @csrf
+                <input slot="lat" type="text" name="lat" value="41.89806" hidden>
+                <input slot="lon" type="text" name="lon" value="12.50911" hidden>
+            </form>
             <h1 slot="header">Napoli</h1>
             <p slot="content">I migliori appartamenti a Napoli</p>
         </cardteam>
+
         <cardteam data-image="https://italianstudies.com.au/wp-content/uploads/2017/03/ccfirenze3.jpg">
+            <a slot="link" class="vue_card_link" href="{{ route('cerca') }}" onclick="event.preventDefault();
+                          document.getElementById('logout-form-roma').submit();">></a>
+            <form id="logout-form-roma" slot="posting" action="{{ route('cerca') }}" method="post" style="display: none;">
+                @csrf
+                <input slot="lat" type="text" name="lat" value="41.89806" hidden>
+                <input slot="lon" type="text" name="lon" value="12.50911" hidden>
+            </form>
             <h1 slot="header">Firenze</h1>
             <p slot="content">I migliori appartamenti a Firenze</p>
         </cardteam>
+
     </div>
+
+
 
     <script>
 

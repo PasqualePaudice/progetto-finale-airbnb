@@ -31,7 +31,7 @@
 
 
                     <div class=" col-xl-3 col-lg-4 col-md-6 mb-4" >
-                        <a id="a" href="{{route('dettagli',['apartment'=>$apartment->id])}}">
+                        <a class="vue_card_link" href="{{route('dettagli',['apartment'=>$apartment->id])}}">
                         </a>
                                 <div class="bg-white rounded shadow-sm" >
                                     <img src="{{asset('storage/'.$apartment->cover_image)}}" alt="" class="img-fluid card-img-top team-4" >
