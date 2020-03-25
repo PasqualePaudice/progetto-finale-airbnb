@@ -29,12 +29,12 @@
 
 
                                 <a class="vue_card_link" href="{{route('dettagli',['apartment'=>$apartment->id])}}">   </a>
-                                    <div class="bg-white rounded shadow-sm" >
+                                    <div class="bg-white rounded shadow-sm h-100" >
                                         <img src="{{asset('storage/'.$apartment->cover_image)}}" alt="" class="img-fluid card-img-top team-4" >
                                         <div class="p-4">
                                             <h5> {{$apartment->title}}</h5>
                                             <p class="small text-muted mb-0">{{$apartment->city}}</p>
-                                            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                                            {{-- <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
                                                 @php
                                                     $apartment_sponsors = DB::table('apartment_sponsor')->where('apartment_id', $apartment->id)->where('end_sponsor', '>=' , $now )->get()
                                                 @endphp
@@ -48,7 +48,7 @@
                                                     <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">Sponsorizzato</span></p>
                                                 @endif
 
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
 
@@ -73,7 +73,7 @@
 
         <cardteam data-image="https://admin.pettinaviaggi.it/images/viaggi/345801e3-2b28-4dfe-a28d-3fd4ba539765_roma.jpg">
             <a slot="link" class="vue_card_link" href="{{ route('cerca') }}" onclick="event.preventDefault();
-                          document.getElementById('logout-form-roma').submit();">></a>
+            document.getElementById('logout-form-roma').submit();">></a>
             <form id="logout-form-roma" slot="posting" action="{{ route('cerca') }}" method="post" style="display: none;">
                 @csrf
                 <input slot="lat" type="text" name="lat" value="41.89806" hidden>
@@ -86,7 +86,7 @@
 
         <cardteam data-image="https://media.timeout.com/images/105186767/image.jpg">
             <a slot="link" class="vue_card_link" href="{{ route('cerca') }}" onclick="event.preventDefault();
-                          document.getElementById('logout-form-milano').submit();">></a>
+            document.getElementById('logout-form-milano').submit();">></a>
             <form id="logout-form-milano" slot="posting" action="{{ route('cerca') }}" method="post" style="display: none;">
                 @csrf
                 <input slot="lat" type="text" name="lat" value="45.46369" hidden>
@@ -98,7 +98,7 @@
 
         <cardteam data-image="https://www.mowgli.it/wp-content/uploads/2018/01/napoli-2.jpg">
             <a slot="link" class="vue_card_link" href="{{ route('cerca') }}" onclick="event.preventDefault();
-                          document.getElementById('logout-form-napoli').submit();">></a>
+            document.getElementById('logout-form-napoli').submit();">></a>
             <form id="logout-form-napoli" slot="posting" action="{{ route('cerca') }}" method="post" style="display: none;">
                 @csrf
                 <input slot="lat" type="text" name="lat" value="40.83546" hidden>
@@ -110,7 +110,7 @@
 
         <cardteam data-image="https://italianstudies.com.au/wp-content/uploads/2017/03/ccfirenze3.jpg">
             <a slot="link" class="vue_card_link" href="{{ route('cerca') }}" onclick="event.preventDefault();
-                          document.getElementById('logout-form-firenze').submit();">></a>
+            document.getElementById('logout-form-firenze').submit();">></a>
             <form id="logout-form-firenze" slot="posting" action="{{ route('cerca') }}" method="post" style="display: none;">
                 @csrf
                 <input slot="lat" type="text" name="lat" value="43.77319" hidden>
@@ -121,6 +121,7 @@
         </cardteam>
 
     </div>
+
 
 
 
