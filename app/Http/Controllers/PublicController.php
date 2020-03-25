@@ -72,6 +72,7 @@ class PublicController extends Controller
     public function search(Request $request){
 
         if ($request->ajax()) {
+            $adesso = Carbon::now();
             $services = $request->service;
             $lat1 = $request->lat;
             $lon1 = $request->lon;
@@ -106,7 +107,14 @@ class PublicController extends Controller
                   $lon2 = $key->lon;
                   $distance = (6371*3.1415926*sqrt(($lat2-$lat1)*($lat2-$lat1) + cos($lat2/57.29578)*cos($lat1/57.29578)*($lon2-$lon1)*($lon2-$lon1))/180);
                   if ($distance <= $range) {
-                      array_push($last_filtered, $key);
+                     if ($key->end_sponsor != null && $key->end_sponsor > $adesso) {
+                         array_push($last_filtered, $key);
+                     }elseif ($key->end_sponsor == null) {
+                        array_push($last_filtered, $key);
+                     }
+
+
+
                   }
                 }
             return response()->json($last_filtered);
