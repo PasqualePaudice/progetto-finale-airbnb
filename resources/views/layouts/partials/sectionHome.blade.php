@@ -12,7 +12,22 @@
         </div>
     </div>
 
-
+    <div class="section">
+        <div class="row">
+            @foreach ($sponsoreds as $sponsored)
+                <div class="col-xl-3 col-lg-4 col-md-6 mb-4" >
+                    <a class="vue_card_link" href="{{route('dettagli',['apartment'=>$sponsored->id])}}"></a>
+                    <div class="bg-white rounded shadow-sm h-100" >
+                        <img src="{{asset('storage/'.$sponsored->cover_image)}}" alt="" class="img-fluid card-img-top team-4">
+                        <div class="p-4">
+                            <h5> {{$sponsored->title}}</h5>
+                            <p class="small text-muted mb-0">{{$sponsored->city}}</p>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
 
 
 

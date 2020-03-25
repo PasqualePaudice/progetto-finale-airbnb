@@ -9,6 +9,7 @@ use App\Apartment;
 use App\Visit;
 use App\Service;
 use App\Message;
+use App\Sponsor;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use GuzzleHttp\Client;
@@ -24,8 +25,27 @@ class PublicController extends Controller
 
         $un_mese_fa = $adesso->copy()->subDays('31');
 
+        $sponsoreds = [];
 
-        return view('welcome',['apartments' => $apartments, 'mese_fa'=>$un_mese_fa,'now'=>$adesso]);
+
+        foreach ($apartments as $apartment) {
+            $apartment_sponsors = DB::table('apartment_sponsor')
+                ->where('apartment_id', $apartment->id)
+                ->where('end_sponsor', '>=' , $adesso)
+                ->first();
+
+            if ($apartment_sponsors != null) {
+                array_push($sponsoreds, $apartment);
+            }
+
+        }
+
+
+        return view('welcome',[
+            'apartments' => $apartments,
+            'sponsoreds' => $sponsoreds,
+            'mese_fa' => $un_mese_fa,
+            'now' => $adesso]);
     }
 
     public function dettagli(Apartment $apartment, Request $request){
