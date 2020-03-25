@@ -11,7 +11,7 @@ h1+p, p+p {
   margin-top: 10px;
 }
 
-.container {
+.containerteam4 {
     &#testingVue {
         margin-bottom: 50px;
         display: flex;
@@ -65,8 +65,8 @@ h1+p, p+p {
 .cardteam {
   position: relative;
   flex: 0 0 240px;
-  width: 240px;
-  height: 320px;
+  width: 350px;
+  height: 280px;
   background-color: #333;
   overflow: hidden;
   border-radius: 10px;
@@ -95,6 +95,7 @@ h1+p, p+p {
 
 .card-info-team-4 {
   padding: 20px;
+  width: 100%;
   position: absolute;
   bottom: 0;
   color: #fff;

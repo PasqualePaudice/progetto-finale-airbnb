@@ -11680,7 +11680,7 @@ p + p {
   margin-top: 10px;
 }
 
-.container#testingVue {
+.containerteam4#testingVue {
   margin-bottom: 50px;
   display: flex;
   flex-wrap: wrap;
@@ -11726,8 +11726,8 @@ p + p {
 .cardteam {
   position: relative;
   flex: 0 0 240px;
-  width: 240px;
-  height: 320px;
+  width: 350px;
+  height: 280px;
   background-color: #333;
   overflow: hidden;
   border-radius: 10px;
@@ -11752,6 +11752,7 @@ p + p {
 
 .card-info-team-4 {
   padding: 20px;
+  width: 100%;
   position: absolute;
   bottom: 0;
   color: #fff;
