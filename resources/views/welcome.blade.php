@@ -4,6 +4,8 @@
 
 
 
-    @include('layouts.public')
-    @include('layouts.partials.jumbo')
-    @include('layouts.partials.sectionHome')
+    @extends('layouts.public')
+    @section('content')
+      @include('layouts.partials.jumbo')
+      @include('layouts.partials.sectionHome')
+    @endsection

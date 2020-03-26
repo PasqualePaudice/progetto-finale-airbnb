@@ -371,8 +371,8 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="{{ asset('js/vue-card.js') }}" defer></script>
 
-{{--
-<hr>
+
+
 <div class="section">
     <div class="col-lg-12">
         <div class="grid">
@@ -400,11 +400,3 @@
         <hr>
     </div>
 </div>
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-2 animated fadeInLeft delay-1s">Pubblica il tuo annuncio</h1>
-      <p class="lead animated lightSpeedIn delay-2s">Entra a far parte del mondo degli affitti</p>
-      <button type="button" class="animated jackInTheBox delay-2s"><a href="{{ route('register') }}">Pubblica il tuo annuncio</a></button>
-    </div>
-  </div>
-  <div class="page-scroll"> --}}

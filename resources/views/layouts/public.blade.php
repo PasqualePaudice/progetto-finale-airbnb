@@ -62,6 +62,7 @@
 
       @include('layouts.partials.public-navbar')
       @yield('content')
+      @include('layouts.partials.footer')
 
     <script src="{{ asset('js/app.js') }}" defer></script>
   </body>

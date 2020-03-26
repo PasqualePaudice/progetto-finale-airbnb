@@ -10888,6 +10888,11 @@ body {
   padding: 0;
   width: 100%;
   font-family: "Montserrat", sans-serif;
+  background: #e6e8e8;
+}
+
+.content {
+  background: #e6e8e8;
 }
 
 a.vue_card_link {
@@ -11396,7 +11401,7 @@ nav#prova ul li a:hover {
 }
 
 body {
-  background: white;
+  background: #e6e8e8;
 }
 
 .modal-login {
@@ -12068,5 +12073,36 @@ ul.ks-cboxtags li input[type=checkbox]:focus + label {
 .custom-option:hover,
 .custom-option.selection {
   background: #f9f9f9;
+}
+
+footer {
+  font-family: "Montserrat", sans-serif;
+  background: #363636;
+  background: radial-gradient(circle, #363636 31%, black 100%);
+  color: white;
+  padding: 50px;
+}
+
+footer .footer-top .icone {
+  width: 220px;
+  display: flex;
+  justify-content: space-around;
+}
+
+footer .footer-top .icone i {
+  cursor: pointer;
+}
+
+footer .footer-bottom {
+  margin-top: 0.5rem;
+}
+
+footer .footer-bottom a {
+  color: white;
+}
+
+footer .footer-bottom a:hover {
+  text-decoration: none;
+  color: white;
 }
 
