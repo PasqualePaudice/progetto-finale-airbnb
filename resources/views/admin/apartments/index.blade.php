@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.publicAdmin')
 
 @section('content')
 
 
-  <div class="container">
+  <div class="container mt-5">
       @if (session('message'))
           <div class="row text-center">
               <div class="col-sm-12">
@@ -20,8 +20,8 @@
       <div class="col-sm-6">
         <h1>Lista appartamenti</h1>
       </div>
-      <div class="col-sm-6">
-        <a class="btn btn-success" href="{{ route('admin.apartments.create') }}">Aggiungi stanza</a>
+      <div class="col-sm-6 text-right">
+        <a class="btn btn-success mt-2" href="{{ route('admin.apartments.create') }}">Aggiungi stanza</a>
       </div>
     </div>
     <div class="row">
@@ -38,10 +38,10 @@
             @forelse($apartments as $apartment)
 
               <tr>
-                <td>{{$apartment->title}}</td>
-                <td>{{$apartment->indirizzo}} </td>
+                <td class="p-0 py-4">{{$apartment->title}}</td>
+                <td class="p-0 py-4">{{$apartment->indirizzo}} </td>
 
-                <td>
+                <td class="p-0 py-3">
 
 
 

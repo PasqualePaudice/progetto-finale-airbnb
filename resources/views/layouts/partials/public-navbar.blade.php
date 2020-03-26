@@ -20,11 +20,14 @@
 
         <div class="menu">
           <ul>
-            <li><a href="#">Link Prova</a></li>
             @if (Route::has('login'))
                 {{-- <div class="top-right links"> --}}
                     @auth
+
+                      @if (Request::url() != url('/admin'))
                         <li><a href="{{ url('/admin') }}">Vai al tuo profilo</a></li>
+                      @endif
+
                         {{-- inseriamo qua logout --}}
                         <li><a href="{{ route('logout') }}"
                            onclick="event.preventDefault();

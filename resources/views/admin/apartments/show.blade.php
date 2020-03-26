@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.publicAdmin')
 
 
 @section('content')
-  <div class="container">
+  <div class="container mt-5">
       @php
         $number_unread = 0;
       @endphp
@@ -34,7 +34,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12">
+      <div class="col-sm-12 mb-5">
         <div class="card" style="width: 100%;">
 
           <img class="card-img-top" src="{{$apartment->cover_image ? asset('storage/' . $apartment->cover_image) : asset('storage/uploads/unnamed.jpg')}}" alt="Card image cap">
@@ -67,7 +67,7 @@
             </ul>
 
             </div>
-            <div id="map" style="width: 500px; height: 500px; margin-left:10px; margin-top:10px">
+            <div id="map" style="width: 100%; height: 400px; margin-bottom: 20px;">
 
 
 

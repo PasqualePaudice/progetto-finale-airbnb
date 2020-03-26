@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.publicAdmin')
 
 @section('content')
 
 
 
-<div class="container">
-    <div class="row justify-content-center">
+<div class="container mt-5">
+    <div class="row justify-content-center mb-5">
         <div class="col-md-8">
             <form class="" action="{{ route('admin.apartments.update',['apartment' => $apartment->id ])}}" method="post" enctype="multipart/form-data" >
                 @csrf
@@ -36,12 +36,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="indirizzo">via</label>
+                    <label for="indirizzo">Via</label>
                     <input id="indirizzo" class="form-control" type="text" name="indirizzo" value="{{ old('indirizzo', $apartment->indirizzo) }}">
                 </div>
 
                 <div class="form-group">
-                    <label for="city">città</label>
+                    <label for="city">Città</label>
                     <input id="city" class="form-control" type="text" name="city" value="{{ old('city',$apartment->city) }}">
                 </div>
 
@@ -68,7 +68,7 @@
                     @if ($apartment->cover_image)
                       <img src="{{asset('storage/' . $apartment->cover_image)}}" alt="" style="width:200px">
                     @endif
-                    <input type="file"  class="form-control-file" id="cover_image" name="cover_image"  >
+                    <input type="file"  class="form-control-file mt-2" id="cover_image" name="cover_image"  >
 
                 </div>
 

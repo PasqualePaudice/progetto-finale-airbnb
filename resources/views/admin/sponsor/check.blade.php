@@ -1,20 +1,23 @@
-@extends('layouts.app')
+@extends('layouts.publicAdmin')
 
 @section('content')
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
+        <div class="container mt-5">
+            <div class="row d-flex justify-content-center m-0">
+                <div class="col-md-6">
                     <div id="dropin-container"></div>
-                    <button class="btn btn-success" id="submit-button">Paga Ora</button>
+                    <div id="pagamento" class="alert alert-success d-none mt-2">Pagamento avvenuto con successo!</div>
+                    <div id="pagamentoError" class="alert alert-danger d-none mt-2">Pagamento rifiutato, riprovare!</div>
+                    <div class="d-flex justify-content-between">
+                      <button class="btn btn-primary mt-5" id="submit-button">Paga Ora</button>
+                      <a class="btn btn-info mt-5" href="{{route('admin.apartments.index')}}">Torna agli appartamenti</a>
+                    </div>
+
                 </div>
             </div>
 
-            <a class="btn btn-success mt-5" href="{{route('admin.apartments.index')}}">Torna agli appartamenti</a>
+
         </div>
-
-
-
 
         <script>
              var button = document.querySelector('#submit-button');
@@ -26,9 +29,16 @@
                          instance.requestPaymentMethod(function (err, payload) {
                              $.get('{{ route('admin.payment.make', [ 'prezzo' => $prezzo , 'apartment' => $apartment]) }}', {payload},function(response){
                                  if (response.success) {
-                                     window.location.replace('{{ route('admin.apartments.index') }}');
+                                    document.getElementById('pagamento').classList.remove('d-none');
+                                    window.setTimeout(function () {
+                                      window.location.replace('{{ route('admin.apartments.index') }}');
+                                    }, 1000);
+
                                  } else {
-                                     alert('Payment failed');
+                                     document.getElementById('pagamentoError').classList.remove('d-none');
+                                     window.setTimeout(function () {
+                                       window.location.replace('{{ route('admin.apartments.index') }}');
+                                     }, 1000);
                                  }
                              }, 'json');
 
@@ -36,14 +46,7 @@
 
                      });
 
-
              });
-
-
-
-
-
-
 
          </script>
 

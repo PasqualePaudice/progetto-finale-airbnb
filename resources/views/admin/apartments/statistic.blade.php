@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.publicAdmin')
 
 @section('content')
 
 
 
-<div class="container">
+<div class="container mt-5">
     <div class="row justify-content-between">
             <div class="col-sm-8">
                 <h1>Statistiche per l'appartamento {{$apartment->id}}</h1>
