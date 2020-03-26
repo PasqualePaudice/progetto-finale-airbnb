@@ -5,25 +5,38 @@
         <div class="container">
             <div class="row" id="servizi">
                 <div class="col-sm-12 d-flex justify-content-center">
-                    @foreach ($services as $service)
-                        <div class="form-group mr-5">
-                            <label for="{{$service->service_name}}">{{$service->service_name}}</label>
-                            <input type="checkbox" id="{{$service->service_name}}" name="servizi" value="{{$service->id}}">
+
+                    <div class="container2">
+                        <ul class="ks-cboxtags">
+
+
+                        @foreach ($services as $service)
+
+                                <li><input type="checkbox" id="{{$service->service_name}}" name="servizi" value="{{$service->id}}"><label for="{{$service->service_name}}">{{$service->service_name}}</label></li>
+
+
+                        @endforeach
+
+                        </ul>
+                        <div class="center">
+                            <select id="sources" name="sources" class="custom-select sources" placeholder="Distanza">
+                                <option value="10">10</option>
+                                <option value="20" selected="selected">20</option>
+                                <option value="30">30</option>
+                                <option value="40">40</option>
+                                <option value="50">50</option>
+                            </select>
                         </div>
-                    @endforeach
-                    <div class="form-group">
-                        <label for="radius">Seleziona una distanza (km)</label>
-                        <select id="radius" name="">
-                            <option value="10">10</option>
-                            <option value="20" selected>20</option>
-                            <option value="30">30</option>
-                            <option value="40">40</option>
-                            <option value="50">50</option>
-                        </select>
                     </div>
+
+
                 </div>
+
             </div>
         </div>
+
+
+
         <div class="section">
             <div class="row" id="filtered">
                 @foreach ($apartments as $apartment)
@@ -156,12 +169,13 @@
 
         var query_lat_lon = '&lat=' + lat + '&lon=' + lon;
 
-        $('select').change(function(){
+        $('div.center').click(function(){
+            console.log($(this).find('.custom-select-wrapper .custom-select .custom-select-trigger').html());
             var now = moment().subtract(1, 'hour').format('YYYY-MM-DD h:mm:ss');
             console.log(now);
             var one_month = moment().subtract(1, 'month').format('YYYY-MM-DD h:mm:ss');
             console.log(one_month);
-            var range = $(this).val();
+            var range = $(this).find('.custom-select-wrapper .custom-select .custom-select-trigger').html();
             var array = [];
             $('#servizi input').each(function(){
                 if($(this).prop("checked")) {
@@ -237,7 +251,11 @@
                     array.push(new_item);
                 }
             });
-            var range = $('select option:selected').val();
+
+            var range =  $('.center').find('.custom-select-wrapper .custom-select .custom-select-trigger').html();
+            if (range == 'Distanza') {
+                range='20';
+            }
             console.log(range);
             var new_query = array.join('&');
             var last_query = new_query + query_lat_lon + '&range=' + range;
@@ -290,6 +308,54 @@
         })
     });
 
+    </script>
+
+    {{-- script filtri --}}
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            $(".custom-select").each(function() {
+                      var classes = $(this).attr("class"),
+                          id      = $(this).attr("id"),
+                          name    = $(this).attr("name");
+                      var template =  '<div class="' + classes + '">';
+                          template += '<span class="custom-select-trigger">' + $(this).attr("placeholder") + '</span>';
+                          template += '<div class="custom-options">';
+                          $(this).find("option").each(function() {
+                            template += '<span class="custom-option ' + $(this).attr("class") + '" value="' + $(this).attr("value") + '">' + $(this).html() + '</span>';
+                        });
+                      template += '</div></div>';
+
+                      $(this).wrap('<div class="custom-select-wrapper"></div>');
+                      $(this).hide();
+                      $(this).after(template);
+                    });
+                    $(".custom-option:first-of-type").hover(function() {
+                      $(this).parents(".custom-options").addClass("option-hover");
+                    }, function() {
+                      $(this).parents(".custom-options").removeClass("option-hover");
+                    });
+                    $(".custom-select-trigger").on("click", function() {
+                      $('html').one('click',function() {
+                        $(".custom-select").removeClass("opened");
+                      });
+                      $(this).parents(".custom-select").toggleClass("opened");
+                      event.stopPropagation();
+                    });
+                    $(".custom-option").on("click", function() {
+                      $(this).parents(".custom-select-wrapper").find("select").val($(this).data("value"));
+                      $(this).parents(".custom-options").find(".custom-option").removeClass("selection");
+                      $(this).addClass("selection");
+                      $(this).parents(".custom-select").removeClass("opened");
+                      $(this).parents(".custom-select").find(".custom-select-trigger").text($(this).text());
+                      $('option[selected=selected').removeAttr('selected');
+                      $('option[value=' + $(this).attr("value") + ']').attr('selected','selected');
+                    });
+
+
+
+        })
     </script>
 
 
