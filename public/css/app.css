@@ -11855,7 +11855,8 @@ p + p {
 }
 
 .container2 {
-  width: 1200px;
+  margin: 0 auto;
+  width: 80%;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 13px;
 }
@@ -11958,17 +11959,19 @@ ul.ks-cboxtags li input[type=checkbox]:focus + label {
 
 .custom-select-trigger {
   top: -2px;
-  left: -1px;
+  left: -20px;
   position: absolute;
   display: block;
   padding: 0 84px 0 22px;
   font-size: 22px;
   font-weight: 300;
   color: #fff;
-  line-height: 42px;
-  background: #5c9cd8;
-  border-radius: 4px;
+  line-height: 40px;
+  background: #B0C6F5;
+  border-radius: 25px;
   cursor: pointer;
+  width: 184.14px;
+  text-align: left;
 }
 
 .custom-select-trigger:after {
@@ -11996,7 +11999,7 @@ ul.ks-cboxtags li input[type=checkbox]:focus + label {
   position: absolute;
   display: block;
   top: 35px;
-  left: 0;
+  left: -20px;
   right: 0;
   min-width: 184.14px;
   margin: 15px 0;
