@@ -16,10 +16,11 @@ class ApartmentsTableSeeder extends Seeder
     {
         $apartments= config('apartments.apartment_db');
 
+        $i = 1;
         foreach ($apartments as $apartment) {
 
             $nuovo_appartamento= new Apartment();
-            
+
             $via = $apartment['indirizzo'];
             $citta = $apartment['city'];
             $stato = $apartment['state'];
@@ -50,9 +51,11 @@ class ApartmentsTableSeeder extends Seeder
             $coordinate->save();
 
             $nuovo_appartamento->fill($apartment);
+            $nuovo_appartamento->cover_image = 'uploads/app'. $i .'.jpg';
             $nuovo_appartamento->coordinates_id = $coordinate->id;
             $nuovo_appartamento->save();
 
+            $i++;
         }
     }
 }
