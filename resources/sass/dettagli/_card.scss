@@ -137,3 +137,10 @@ h1+p, p+p {
 .fathervue {
     position: relative;
 }
+
+@media (max-width: 768px) {
+    .cardteam{
+        width: 300px;
+        height: 240px;        
+    }
+}

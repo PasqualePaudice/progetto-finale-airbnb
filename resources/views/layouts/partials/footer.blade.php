@@ -1,6 +1,6 @@
 <footer>
       <div class="container">
-        <div class="row">
+        <div class="row ml-0">
           <div class="footer-top col-sm-12 d-flex flex-column align-items-center">
             <h1>BoolBnB</h1>
             <div class="icone">

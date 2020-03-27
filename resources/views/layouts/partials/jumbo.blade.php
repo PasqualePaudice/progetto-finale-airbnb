@@ -3,12 +3,12 @@
         <div class="carousel-item active slide-one">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-lg-6 col-md-12">
                         <h1 class="animated fadeInLeft delay-1s">Case vacanze, alloggi, esperienze e luoghi</h1>
                         <p class="animated lightSpeedIn delay-2s">Un'esperienza di viaggio indimenticabile comincia con BoolBnB: avventure, case vacanze e nuovi posti dove andare, sia lontani che vicini.</p>
                         <button type="button" class="animated jackInTheBox delay-5s">Scopri di piu'</button>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-lg-6 d-lg-block d-sm-none">
                         <div class="img-box">
                             <img src="{{ asset("images/pic-1.png") }}" class="pic-one animated zoomIn delay-1s">
                             <img src="{{ asset("images/pic-2.png") }}" class="pic-two animated fadeInLeft delay-4s">

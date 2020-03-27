@@ -102,3 +102,9 @@
 #minJumbo {
     border-radius: 15px;
 }
+
+@media (max-width: 767px) {
+    .section {
+        padding: 10px;
+    }
+}

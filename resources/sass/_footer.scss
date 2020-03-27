@@ -26,3 +26,10 @@ footer{
 
   }
 }
+
+
+@media (max-width: 425px) {
+    footer {
+        padding: 50px 18px;
+    }
+}

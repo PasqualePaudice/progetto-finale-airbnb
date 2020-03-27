@@ -24,13 +24,13 @@
             </div>
       @endif
     <div class="row mb-3">
-      <div class="col-sm-6">
+      <div class="col-sm-12 col-md-4">
         <h1>Dettagli appartamento</h1>
       </div>
-      <div class="col-sm-6 d-flex align-items-center justify-content-end">
-        <a class="btn btn-success mr-2"href="{{ route('admin.apartments.index')}}">Torna agli Appartamenti</a>
-        <a class="btn btn-warning mr-2"href="{{ route('admin.apartments.messages', ['apartment' => $apartment->id])}}">Vai ai messaggi</a>
-        <a class="btn btn-info float-right" href="{{ route('admin.apartments.statistic', ['apartment' => $apartment->id])}}">Vai alle statistiche</a>
+      <div class="col-sm-12 col-md-8 d-flex align-items-center justify-content-around flex-wrap">
+        <a class="btn btn-success mb-1"href="{{ route('admin.apartments.index')}}">Torna agli Appartamenti</a>
+        <a class="btn btn-warning mb-1"href="{{ route('admin.apartments.messages', ['apartment' => $apartment->id])}}">Vai ai messaggi</a>
+        <a class="btn btn-info float-right mb-1" href="{{ route('admin.apartments.statistic', ['apartment' => $apartment->id])}}">Vai alle statistiche</a>
       </div>
     </div>
     <div class="row">

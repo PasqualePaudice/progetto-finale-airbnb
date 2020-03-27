@@ -5,7 +5,7 @@
                 <div class="overlay">
                 </div>
                 <div class="d-flex flex-column justify-content-center text-center">
-                    <h2>TROVA L'APPARTAMENTO NEL TUO STILE</h2>
+                    <h2 id="smaller">TROVA L'APPARTAMENTO NEL TUO STILE</h2>
                     <h4>I nostri appartamenti Premium</h4>
                 </div>
             </div>

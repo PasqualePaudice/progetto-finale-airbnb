@@ -194,3 +194,9 @@ $displacement:  3px;
   }
 }
 }
+
+@media (max-width: 768px) {
+    #loginCss, #registerCss{
+        padding: 5px 10px;
+    }
+}

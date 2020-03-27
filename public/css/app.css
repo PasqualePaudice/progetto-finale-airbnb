@@ -10906,10 +10906,6 @@ a.vue_card_link {
   height: 200px;
 }
 
-.row {
-  width: 100%;
-}
-
 .barra_ricerca_tomtom {
   position: relative;
   bottom: 5px;
@@ -11061,7 +11057,20 @@ a.vue_card_link {
   }
 }
 
+@media (min-width: 1100px) and (max-width: 1480px) {
+  #testingVue {
+    width: 1000px;
+    margin: 0 auto;
+  }
+}
+
 @media (max-width: 768px) {
+  .barra_ricerca_tomtom svg {
+    fill: black;
+  }
+}
+
+@media (max-width: 767px) {
   .team-4 {
     height: auto;
   }
@@ -11071,10 +11080,17 @@ a.vue_card_link {
   }
 }
 
-@media (min-width: 1100px) and (max-width: 1480px) {
+@media (max-width: 425px) {
+  #smaller {
+    font-size: 1.8rem;
+  }
+
+  .barra_ricerca_tomtom {
+    width: 180px;
+  }
+
   #testingVue {
-    width: 1000px;
-    margin: 0 auto;
+    margin-right: -10px;
   }
 }
 
@@ -11521,6 +11537,12 @@ nav#prova ul li a:hover {
   border-radius: 15px;
 }
 
+@media (max-width: 767px) {
+  .section {
+    padding: 10px;
+  }
+}
+
 body {
   background: #e6e8e8;
 }
@@ -11813,6 +11835,13 @@ body {
   height: 40px;
   width: auto;
   margin: 20px;
+}
+
+@media (max-width: 768px) {
+  #loginCss,
+  #registerCss {
+    padding: 5px 10px;
+  }
 }
 
 html,
@@ -12196,6 +12225,13 @@ p + p {
 
 .fathervue {
   position: relative;
+}
+
+@media (max-width: 768px) {
+  .cardteam {
+    width: 300px;
+    height: 240px;
+  }
 }
 
 .error-container {
@@ -12678,5 +12714,11 @@ footer .footer-bottom a {
 footer .footer-bottom a:hover {
   text-decoration: none;
   color: white;
+}
+
+@media (max-width: 425px) {
+  footer {
+    padding: 50px 18px;
+  }
 }
 

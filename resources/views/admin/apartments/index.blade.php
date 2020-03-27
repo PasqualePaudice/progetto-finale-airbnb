@@ -45,15 +45,15 @@
 
 
 
-                  <a class="btn btn-info" href="{{route('admin.apartments.show',['apartment' => $apartment->id])}}">Visualizza</a>
-                  <a class="btn btn-warning" href="{{route('admin.apartments.edit',['apartment' => $apartment->id])}}">Modifica</a>
-                  <a class="btn btn-secondary" href="{{route('admin.visibility',['apartment' => $apartment->id])}}">
+                  <a class="btn btn-info mt-1" href="{{route('admin.apartments.show',['apartment' => $apartment->id])}}">Visualizza</a>
+                  <a class="btn btn-warning mt-1" href="{{route('admin.apartments.edit',['apartment' => $apartment->id])}}">Modifica</a>
+                  <a class="btn btn-secondary mt-1" href="{{route('admin.visibility',['apartment' => $apartment->id])}}">
                       {{($apartment->visible == 1) ? 'Disattiva' : 'Attiva' }}
                   </a>
                   <form class="d-inline-block" action=" {{route('admin.apartments.destroy',['apartment' => $apartment->id])}}" method="post">
                     @csrf
                     @method('DELETE')
-                    <input class="btn btn-danger d-inline-block" type="submit" value="Cancella">
+                    <input class="btn btn-danger d-inline-block mt-1" type="submit" value="Cancella">
                   </form>
                   @php
                       $apartment_sponsors = DB::table('apartment_sponsor')->where('apartment_id', $apartment->id)->where('end_sponsor', '>=' , $now )->get()
@@ -65,7 +65,7 @@
 
 
                   @else
-                      <a class="btn btn-success" href="{{ route('admin.apartments.sponsor',['apartment' => $apartment->id]) }}">
+                      <a class="btn btn-success mt-1" href="{{ route('admin.apartments.sponsor',['apartment' => $apartment->id]) }}">
                       Sponsorizza</a>
 
                   @endif

@@ -28,27 +28,27 @@
                 @forelse($messages as $message)
                     @if ($message->read == 0)
                         <tr>
-                            <th>{{$message->email}}</th>
-                            <th>{{$message->created_at}}</th>
-                            <td>
-                                <a class="btn btn-primary" href="{{route('admin.apartments.messages.show',['apartment' => $apartment, 'message' => $message])}}">Visualizza</a>
+                            <th class="p-0 py-4">{{$message->email}}</th>
+                            <th class="p-0 py-4">{{$message->created_at}}</th>
+                            <td class="p-0 py-4">
+                                <a class="btn btn-primary mb-1" href="{{route('admin.apartments.messages.show',['apartment' => $apartment, 'message' => $message])}}">Visualizza</a>
                                 <form class="d-inline-block" action="{{route('admin.apartments.messages.destroy',['apartment' => $apartment, 'message' => $message])}}" method="post">
                                   @csrf
                                   @method('DELETE')
-                                  <input class="btn btn-danger d-inline-block" type="submit" value="Elimina">
+                                  <input class="btn btn-danger d-inline-block mb-1" type="submit" value="Elimina">
                                 </form>
                             </td>
                         </tr>
                     @else
                         <tr>
-                            <td>{{$message->email}}</td>
-                            <td>{{$message->created_at}}</td>
-                            <td>
-                                <a class="btn btn-primary" href="{{route('admin.apartments.messages.show',['apartment' => $apartment, 'message' => $message])}}">Visualizza</a>
+                            <td class="p-0 py-4">{{$message->email}}</td>
+                            <td class="p-0 py-4">{{$message->created_at}}</td>
+                            <td class="p-0 py-4">
+                                <a class="btn btn-primary mb-1" href="{{route('admin.apartments.messages.show',['apartment' => $apartment, 'message' => $message])}}">Visualizza</a>
                                 <form class="d-inline-block" action="{{route('admin.apartments.messages.destroy',['apartment' => $apartment, 'message' => $message])}}" method="post">
                                   @csrf
                                   @method('DELETE')
-                                  <input class="btn btn-danger d-inline-block" type="submit" value="Elimina">
+                                  <input class="btn btn-danger d-inline-block mb-1" type="submit" value="Elimina">
                                 </form>
                             </td>
                         </tr>
