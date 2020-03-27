@@ -2,7 +2,7 @@
 body {
     background: #e6e8e8;
 }
-#loginCss{
+#loginCss, #registerCss {
   display: flex;
   justify-content: center;
   margin-top: 50px;
@@ -26,7 +26,7 @@ form {
   flex-direction:  column;
   align-items:  flex-start;
   padding-bottom:  20px;
-  width:  300px;
+  width:  450px;
   h4 {
     margin-bottom:  20px;
     color:  rgba(#000, .5);
@@ -178,7 +178,7 @@ $displacement:  3px;
   box-shadow:  0px 2px 6px -1px rgba(0,0,0,.12);
 }
 .left {
-  width:  220px;
+  width:  225px;
   height:  auto;
   min-height:  100%;
   position:  relative;

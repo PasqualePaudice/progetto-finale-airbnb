@@ -11507,47 +11507,54 @@ body {
   background: #e6e8e8;
 }
 
-#loginCss {
+#loginCss,
+#registerCss {
   display: flex;
   justify-content: center;
   margin-top: 50px;
 }
 
-#loginCss h4 {
+#loginCss h4,
+#registerCss h4 {
   font-size: 24px;
   font-weight: 600;
   color: #000;
   opacity: 0.85;
 }
 
-#loginCss label {
+#loginCss label,
+#registerCss label {
   font-size: 12.5px;
   color: #000;
   opacity: 0.8;
   font-weight: 400;
 }
 
-#loginCss form {
+#loginCss form,
+#registerCss form {
   padding: 40px 30px;
   background: #fefefe;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding-bottom: 20px;
-  width: 300px;
+  width: 450px;
 }
 
-#loginCss form h4 {
+#loginCss form h4,
+#registerCss form h4 {
   margin-bottom: 20px;
   color: rgba(0, 0, 0, 0.5);
 }
 
-#loginCss form h4 span {
+#loginCss form h4 span,
+#registerCss form h4 span {
   color: black;
   font-weight: 700;
 }
 
-#loginCss form p {
+#loginCss form p,
+#registerCss form p {
   line-height: 155%;
   margin-bottom: 5px;
   font-size: 14px;
@@ -11558,7 +11565,8 @@ body {
   margin-bottom: 40px;
 }
 
-#loginCss a.discrete {
+#loginCss a.discrete,
+#registerCss a.discrete {
   color: rgba(0, 0, 0, 0.4);
   font-size: 14px;
   border-bottom: solid 1px rgba(0, 0, 0, 0);
@@ -11569,11 +11577,13 @@ body {
   margin-top: 40px;
 }
 
-#loginCss a.discrete:hover {
+#loginCss a.discrete:hover,
+#registerCss a.discrete:hover {
   border-bottom: solid 1px rgba(0, 0, 0, 0.2);
 }
 
-#loginCss button {
+#loginCss button,
+#registerCss button {
   -webkit-appearance: none;
   width: auto;
   min-width: 100px;
@@ -11592,16 +11602,19 @@ body {
   outline: 0;
 }
 
-#loginCss button:hover {
+#loginCss button:hover,
+#registerCss button:hover {
   transform: translateY(-3px);
   box-shadow: 0 2px 6px -1px rgba(182, 157, 230, 0.65);
 }
 
-#loginCss button:hover:active {
+#loginCss button:hover:active,
+#registerCss button:hover:active {
   transform: scale(0.99);
 }
 
-#loginCss input {
+#loginCss input,
+#registerCss input {
   font-size: 16px;
   padding: 20px 0px;
   height: 56px;
@@ -11616,19 +11629,22 @@ body {
   -webkit-appearance: none;
 }
 
-#loginCss input:focus {
+#loginCss input:focus,
+#registerCss input:focus {
   border-bottom: solid 1px #b69de6;
   outline: 0;
   box-shadow: 0 2px 6px -8px rgba(182, 157, 230, 0.45);
 }
 
-#loginCss .floating-label {
+#loginCss .floating-label,
+#registerCss .floating-label {
   position: relative;
   margin-bottom: 10px;
   width: 100%;
 }
 
-#loginCss .floating-label label {
+#loginCss .floating-label label,
+#registerCss .floating-label label {
   position: absolute;
   top: calc(50% - 7px);
   left: 0;
@@ -11637,13 +11653,15 @@ body {
   padding-left: 44px;
 }
 
-#loginCss .floating-label input {
+#loginCss .floating-label input,
+#registerCss .floating-label input {
   width: calc(100% - 44px);
   margin-left: auto;
   display: flex;
 }
 
-#loginCss .floating-label .icon {
+#loginCss .floating-label .icon,
+#registerCss .floating-label .icon {
   position: absolute;
   top: 0;
   left: 0;
@@ -11652,7 +11670,8 @@ body {
   display: flex;
 }
 
-#loginCss .floating-label .icon svg {
+#loginCss .floating-label .icon svg,
+#registerCss .floating-label .icon svg {
   height: 30px;
   width: 30px;
   margin: auto;
@@ -11660,28 +11679,34 @@ body {
   transition: all 0.3s ease;
 }
 
-#loginCss .floating-label .icon svg path {
+#loginCss .floating-label .icon svg path,
+#registerCss .floating-label .icon svg path {
   transition: all 0.3s ease;
 }
 
-#loginCss .floating-label input:not(:placeholder-shown) {
+#loginCss .floating-label input:not(:placeholder-shown),
+#registerCss .floating-label input:not(:placeholder-shown) {
   padding: 28px 0px 12px 0px;
 }
 
-#loginCss .floating-label input:not(:placeholder-shown) + label {
+#loginCss .floating-label input:not(:placeholder-shown) + label,
+#registerCss .floating-label input:not(:placeholder-shown) + label {
   transform: translateY(-10px);
   opacity: 0.7;
 }
 
-#loginCss .floating-label input:valid:not(:placeholder-shown) + label + .icon svg {
+#loginCss .floating-label input:valid:not(:placeholder-shown) + label + .icon svg,
+#registerCss .floating-label input:valid:not(:placeholder-shown) + label + .icon svg {
   opacity: 1;
 }
 
-#loginCss .floating-label input:valid:not(:placeholder-shown) + label + .icon svg path {
+#loginCss .floating-label input:valid:not(:placeholder-shown) + label + .icon svg path,
+#registerCss .floating-label input:valid:not(:placeholder-shown) + label + .icon svg path {
   fill: #b69de6;
 }
 
-#loginCss .floating-label input:not(:valid):not(:focus) + label + .icon {
+#loginCss .floating-label input:not(:valid):not(:focus) + label + .icon,
+#registerCss .floating-label input:not(:valid):not(:focus) + label + .icon {
   -webkit-animation-name: shake-shake;
           animation-name: shake-shake;
   -webkit-animation-duration: 0.3s;
@@ -11740,7 +11765,8 @@ body {
   }
 }
 
-#loginCss .session {
+#loginCss .session,
+#registerCss .session {
   display: flex;
   flex-direction: row;
   width: auto;
@@ -11751,8 +11777,9 @@ body {
   box-shadow: 0px 2px 6px -1px rgba(0, 0, 0, 0.12);
 }
 
-#loginCss .left {
-  width: 220px;
+#loginCss .left,
+#registerCss .left {
+  width: 225px;
   height: auto;
   min-height: 100%;
   position: relative;
@@ -11763,7 +11790,8 @@ body {
   border-bottom-left-radius: 4px;
 }
 
-#loginCss .left svg {
+#loginCss .left svg,
+#registerCss .left svg {
   height: 40px;
   width: auto;
   margin: 20px;
