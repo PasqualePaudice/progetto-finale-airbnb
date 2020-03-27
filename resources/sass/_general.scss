@@ -167,3 +167,19 @@ a.vue_card_link{
   }
 
 }
+
+
+@media (max-width: 768px) {
+    .team-4{
+      height: auto;
+    }
+    .section {
+        padding: 10px;
+    }
+}
+@media (min-width: 1100px) and (max-width: 1480px) {
+    #testingVue {
+        width: 1000px;
+        margin: 0 auto;
+    }
+}

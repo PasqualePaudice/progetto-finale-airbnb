@@ -290,6 +290,32 @@
 
 
 
+    <div class="section">
+        <div class="col-sm-12">
+            <div class="grid">
+                <div class="sector col-lg-3 col-md-6 col-sm-12">
+                    <img src="{{ asset("img/shield.png")  }}" alt=""/>
+                    <h5 class="text-dark">Con noi la tua vacanza e' piu' al sicuro</h5>
+                    <p class="small text-muted mb-0">Pagamenti sicuri, servizio attenzione al cliente 24h su 24h e Garanzia Prenotazione Sicura</p>
+                </div>
+                <div class="sector col-lg-3 col-md-6 col-sm-12">
+                    <img src="{{ asset("img/worldwide.png")  }}" alt=""/>
+                    <h5 class="text-dark">Le migliori vacanze cominciano qui</h5>
+                    <p class="small text-muted mb-0">Dalla prenotazione al soggiorno, l’intero processo è facile e piacevole</p>
+                </div>
+                <div class="sector col-lg-3 col-md-6 col-sm-12">
+                    <img src="{{ asset("img/coffee-cup.png")  }}" alt=""/>
+                    <h5 class="text-dark">Tutti i confort che desideri di una casa</h5>
+                    <p class="small text-muted mb-0">Cucina con tutte le comodità, lavanderia, piscina, giardino e molto altro</p>
+                </div>
+                <div class="sector col-lg-3 col-md-6 col-sm-12">
+                    <img src="{{ asset("img/premium.png")  }}" alt=""/>
+                    <h5 class="text-dark">Molto più che una casa vacanza</h5>
+                    <p class="small text-muted mb-0">Più spazio, più privacy, più servizi... migliore qualità!</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -370,32 +396,3 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="{{ asset('js/vue-card.js') }}" defer></script>
-
-
-
-<div class="section">
-    <div class="col-sm-12">
-        <div class="grid">
-            <div class="sector col-md-3 col-sm-12">
-                <img src="{{ asset("img/shield.png")  }}" alt=""/>
-                <h5 class="text-dark">Con noi la tua vacanza e' piu' al sicuro</h5>
-                <p class="small text-muted mb-0">Pagamenti sicuri, servizio attenzione al cliente 24h su 24h e Garanzia Prenotazione Sicura</p>
-            </div>
-            <div class="sector col-md-3 col-sm-12">
-                <img src="{{ asset("img/worldwide.png")  }}" alt=""/>
-                <h5 class="text-dark">Le migliori vacanze cominciano qui</h5>
-                <p class="small text-muted mb-0">Dalla prenotazione al soggiorno, l’intero processo è facile e piacevole</p>
-            </div>
-            <div class="sector col-md-3 col-sm-12">
-                <img src="{{ asset("img/coffee-cup.png")  }}" alt=""/>
-                <h5 class="text-dark">Tutti i confort che desideri di una casa</h5>
-                <p class="small text-muted mb-0">Cucina con tutte le comodità, lavanderia, piscina, giardino e molto altro</p>
-            </div>
-            <div class="sector col-md-3 col-sm-12">
-                <img src="{{ asset("img/premium.png")  }}" alt=""/>
-                <h5 class="text-dark">Molto più che una casa vacanza</h5>
-                <p class="small text-muted mb-0">Più spazio, più privacy, più servizi... migliore qualità!</p>
-            </div>
-        </div>
-    </div>
-</div>

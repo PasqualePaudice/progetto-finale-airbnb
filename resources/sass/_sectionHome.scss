@@ -14,13 +14,13 @@
     align-items: center;
     // min-height: 100vh;
     padding: 50px;
-    
+
   }
 
   .grid {
     display: flex;
     flex-wrap: wrap;
-
+    justify-content: center;
 }
 
 .sector h5 {
