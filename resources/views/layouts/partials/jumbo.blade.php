@@ -5,9 +5,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <h1 class="animated fadeInLeft delay-1s">Case vacanze, alloggi, esperienze e luoghi</h1>
-                        <p class="animated lightSpeedIn delay-2s">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, quos, voluptate vel
-                            numquam voluptas, incidunt dicta voluptatum perferendis sit odio autem aliquid qui!
-                            Quasi alias perferendis quisquam, error dolorum neque.</p>
+                        <p class="animated lightSpeedIn delay-2s">Un'esperienza di viaggio indimenticabile comincia con BoolBnB: avventure, case vacanze e nuovi posti dove andare, sia lontani che vicini.</p>
                         <button type="button" class="animated jackInTheBox delay-5s">Scopri di piu'</button>
                     </div>
                     <div class="col-md-6">
