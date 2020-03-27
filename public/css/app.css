@@ -10900,6 +10900,7 @@ a.vue_card_link {
   width: 100%;
   height: 100%;
   z-index: 1000;
+  left: 0;
 }
 
 .team-4 {
